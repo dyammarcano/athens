@@ -12,7 +12,8 @@ The `icon` shortcode displays icons using the [Font Awesome](https://fontawesome
 
 ## Usage
 
-While the examples are using shortcodes with positional parameter you are free to also call this shortcode from your own partials.
+While the examples are using shortcodes with positional parameter you are free to also call this shortcode from your own
+partials.
 
 {{< tabs groupid="shortcode-parameter">}}
 {{% tab title="shortcode" %}}
@@ -55,15 +56,17 @@ While the examples are using shortcodes with positional parameter you are free t
 
 ### Parameter
 
-| Name                  | Position | Default         | Notes       |
-|-----------------------|----------|-----------------|-------------|
-| **icon**              | 1        | _&lt;empty&gt;_ | [Font Awesome icon name](#finding-an-icon) to be displayed. It will be displayed in the text color of its according context. |
+| Name     | Position | Default         | Notes                                                                                                                        |
+|----------|----------|-----------------|------------------------------------------------------------------------------------------------------------------------------|
+| **icon** | 1        | _&lt;empty&gt;_ | [Font Awesome icon name](#finding-an-icon) to be displayed. It will be displayed in the text color of its according context. |
 
 ### Finding an icon
 
-Browse through the available icons in the [Font Awesome Gallery](https://fontawesome.com/v6/search?m=free). Notice that the **free** filter is enabled, as only the free icons are available by default.
+Browse through the available icons in the [Font Awesome Gallery](https://fontawesome.com/v6/search?m=free). Notice that
+the **free** filter is enabled, as only the free icons are available by default.
 
-Once on the Font Awesome page for a specific icon, for example the page for the [heart](https://fontawesome.com/v6/icons/heart?s=solid), copy the icon name and paste into the Markdown content.
+Once on the Font Awesome page for a specific icon, for example the page for
+the [heart](https://fontawesome.com/v6/icons/heart?s=solid), copy the icon name and paste into the Markdown content.
 
 ### Customising Icons
 
@@ -88,7 +91,9 @@ Built with {{% icon heart %}} by Relearn and Hugo
 
 ### Advanced HTML Usage
 
-While the shortcode simplifies using standard icons, the icon customization and other advanced features of the Font Awesome library require you to use HTML directly. Paste the `<i>` HTML into markup, and Font Awesome will load the relevant icon.
+While the shortcode simplifies using standard icons, the icon customization and other advanced features of the Font
+Awesome library require you to use HTML directly. Paste the `<i>` HTML into markup, and Font Awesome will load the
+relevant icon.
 
 ````html
 Built with <i class="fas fa-heart"></i> by Relearn and Hugo

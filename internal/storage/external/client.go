@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/storage"
 	"golang.org/x/mod/module"
 )
 

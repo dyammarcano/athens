@@ -5,8 +5,10 @@ date: 2018-02-11T15:57:56-05:00
 
 ## Communication flow
 
-This is the story of a time long ago. A time of myth and legend when the ancient Gods were petty and cruel and they plagued build with irreproducibility.
-Only one project dared to challenge their power...Athens. Athens possessed a strength the world had never seen. Filling its storage.
+This is the story of a time long ago. A time of myth and legend when the ancient Gods were petty and cruel and they
+plagued build with irreproducibility.
+Only one project dared to challenge their power...Athens. Athens possessed a strength the world had never seen. Filling
+its storage.
 
 ### Clean plate
 
@@ -27,6 +29,7 @@ The process from the user using `go get` all the way to the user downloading a m
 
 ### Happy path
 
-Now that the Athens proxy is aware of module M at version v1.0, it can serve that module immediately to the user, without fetching it from the VCS.
+Now that the Athens proxy is aware of module M at version v1.0, it can serve that module immediately to the user,
+without fetching it from the VCS.
 
 ![Communication flow for new proxy](/athens-proxy-filled.png)

@@ -3,15 +3,14 @@ package fs
 import (
 	"context"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
+	"github.com/dyammarcano/athens/internal/errors"
 )
 
 // Delete removes a specific version of a module.
 func (s *storageImpl) Delete(ctx context.Context, module, version string) error {
 	const op errors.Op = "fs.Delete"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	versionedPath := s.versionLocation(module, version)
 	exists, err := s.Exists(ctx, module, version)
 	if err != nil {

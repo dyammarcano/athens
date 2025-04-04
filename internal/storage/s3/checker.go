@@ -7,17 +7,16 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/aws/smithy-go"
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/errors"
 )
 
 // Exists implements the (./pkg/storage).Checker interface
 // returning true if the module at version exists in storage.
 func (s *Storage) Exists(ctx context.Context, module, version string) (bool, error) {
-	const op errors.Op = "s3.Exists"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//const op errors.Op = "s3.Exists"
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 
 	files := []string{"info", "mod", "zip"}
 	errChan := make(chan error, len(files))

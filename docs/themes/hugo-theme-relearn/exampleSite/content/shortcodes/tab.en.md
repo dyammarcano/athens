@@ -19,7 +19,8 @@ printf("Hello World!");
 
 ## Usage
 
-While the examples are using shortcodes with named parameter you are free to also call this shortcode from your own partials.
+While the examples are using shortcodes with named parameter you are free to also call this shortcode from your own
+partials.
 
 {{< tabs groupid="shortcode-parameter">}}
 {{% tab title="shortcode" %}}
@@ -48,13 +49,13 @@ printf("Hello World!");
 
 ### Parameter
 
-| Name                  | Default         | Notes       |
-|-----------------------|-----------------|-------------|
-| **style**             | see notes       | The style scheme used for the tab. If you don't set a style and you display a single code block inside of the tab, its default styling will adapt to that of a `code` block. Otherwise `default` is used.<br><br>- by severity: `info`, `note`, `tip`, `warning`<br>- by brand color: `primary`, `secondary`, `accent`<br>- by color: `blue`, `green`, `grey`, `orange`, `red`<br>- by special color: `default`, `transparent`, `code` |
-| **color**             | see notes       | The [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) to be used. If not set, the chosen color depends on the **style**. Any given value will overwrite the default.<br><br>- for severity styles: a nice matching color for the severity<br>- for all other styles: the corresponding color |
-| **title**             | see notes       | Arbitrary title for the tab. Depending on the **style** there may be a default title. Any given value will overwrite the default.<br><br>- for severity styles: the matching title for the severity<br>- for all other styles: _&lt;empty&gt;_<br><br>If you want no title for a severity style, you have to set this parameter to `" "` (a non empty string filled with spaces) |
+| Name                  | Default         | Notes                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+|-----------------------|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **style**             | see notes       | The style scheme used for the tab. If you don't set a style and you display a single code block inside of the tab, its default styling will adapt to that of a `code` block. Otherwise `default` is used.<br><br>- by severity: `info`, `note`, `tip`, `warning`<br>- by brand color: `primary`, `secondary`, `accent`<br>- by color: `blue`, `green`, `grey`, `orange`, `red`<br>- by special color: `default`, `transparent`, `code`      |
+| **color**             | see notes       | The [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) to be used. If not set, the chosen color depends on the **style**. Any given value will overwrite the default.<br><br>- for severity styles: a nice matching color for the severity<br>- for all other styles: the corresponding color                                                                                                                  |
+| **title**             | see notes       | Arbitrary title for the tab. Depending on the **style** there may be a default title. Any given value will overwrite the default.<br><br>- for severity styles: the matching title for the severity<br>- for all other styles: _&lt;empty&gt;_<br><br>If you want no title for a severity style, you have to set this parameter to `" "` (a non empty string filled with spaces)                                                            |
 | **icon**              | see notes       | [Font Awesome icon name](shortcodes/icon#finding-an-icon) set to the left of the title. Depending on the **style** there may be a default icon. Any given value will overwrite the default.<br><br>- for severity styles: a nice matching icon for the severity<br>- for all other styles: _&lt;empty&gt;_<br><br>If you want no icon for a severity style, you have to set this parameter to `" "` (a non empty string filled with spaces) |
-| _**&lt;content&gt;**_ | _&lt;empty&gt;_ | Arbitrary text to be displayed in the tab. |
+| _**&lt;content&gt;**_ | _&lt;empty&gt;_ | Arbitrary text to be displayed in the tab.                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 ## Examples
 
@@ -150,14 +151,16 @@ This will set the background to a lighter version of the chosen CSS color value.
 
 The `style` parameter affects how the `color` parameter is applied.
 
-The `default` style will set the background to your `--MAIN-BG-color` as configured for your theme variant resembling the default style but with different color.
+The `default` style will set the background to your `--MAIN-BG-color` as configured for your theme variant resembling
+the default style but with different color.
 
 {{% /tab %}}
 {{% tab title="just severity style" style="info" %}}
 
 The `style` parameter is set to a severity style.
 
-This will set the background to a lighter version of the chosen style color as configured in your theme variant and also affects the chosen icon.
+This will set the background to a lighter version of the chosen style color as configured in your theme variant and also
+affects the chosen icon.
 
 {{% /tab %}}
 {{% tab title="severity style and color" style="info" color="blue" %}}

@@ -7,9 +7,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
-	"github.com/gomods/athens/internal/paths"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/paths"
 	"github.com/spf13/afero"
 )
 
@@ -19,8 +18,8 @@ const tokenSeparator = "|"
 // It returns a list of modules and versions contained in the storage.
 func (s *storageImpl) Catalog(ctx context.Context, token string, pageSize int) ([]paths.AllPathParams, string, error) {
 	const op errors.Op = "fs.Catalog"
-	_, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//_, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 
 	fromModule, fromVersion, err := modVerFromToken(token)
 	if err != nil {

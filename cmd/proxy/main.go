@@ -5,7 +5,7 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/gomods/athens/internal/actions"
+	"github.com/dyammarcano/athens/internal/actions"
 	stdlog "log"
 	"net"
 	"net/http"
@@ -14,10 +14,10 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/gomods/athens/internal/build"
-	"github.com/gomods/athens/internal/config"
-	athenslog "github.com/gomods/athens/internal/log"
-	"github.com/gomods/athens/internal/shutdown"
+	"github.com/dyammarcano/athens/internal/build"
+	"github.com/dyammarcano/athens/internal/config"
+	athenslog "github.com/dyammarcano/athens/internal/log"
+	"github.com/dyammarcano/athens/internal/shutdown"
 	"github.com/sirupsen/logrus"
 )
 

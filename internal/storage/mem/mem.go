@@ -3,9 +3,9 @@ package mem
 import (
 	"fmt"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/storage"
-	"github.com/gomods/athens/internal/storage/fs"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/storage/fs"
 	"github.com/spf13/afero"
 )
 

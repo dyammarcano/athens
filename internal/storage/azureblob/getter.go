@@ -5,17 +5,16 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/storage"
 )
 
 // Info implements the (./pkg/storage).Getter interface.
 func (s *Storage) Info(ctx context.Context, module, version string) ([]byte, error) {
 	const op errors.Op = "azureblob.Info"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 
 	exists, err := s.Exists(ctx, module, version)
 	if err != nil {
@@ -46,8 +45,8 @@ func (s *Storage) Info(ctx context.Context, module, version string) ([]byte, err
 // GoMod implements the (./pkg/storage).Getter interface.
 func (s *Storage) GoMod(ctx context.Context, module, version string) ([]byte, error) {
 	const op errors.Op = "azureblob.GoMod"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 
 	exists, err := s.Exists(ctx, module, version)
 	if err != nil {
@@ -78,8 +77,8 @@ func (s *Storage) GoMod(ctx context.Context, module, version string) ([]byte, er
 // Zip implements the (./pkg/storage).Getter interface.
 func (s *Storage) Zip(ctx context.Context, module, version string) (storage.SizeReadCloser, error) {
 	const op errors.Op = "azureblob.Zip"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	exists, err := s.Exists(ctx, module, version)
 	if err != nil {
 		return nil, errors.E(op, err, errors.M(module), errors.V(version))

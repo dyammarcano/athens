@@ -11,10 +11,10 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/storage"
-	"github.com/gomods/athens/internal/storage/compliance"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/storage/compliance"
 
 	"github.com/stretchr/testify/require"
 )

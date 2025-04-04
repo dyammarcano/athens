@@ -2,22 +2,22 @@ before:
   hooks:
     - go mod download
 env:
-- CGO_ENABLED=0
-- GOPROXY=https://proxy.golang.org
+  - CGO_ENABLED=0
+  - GOPROXY=https://proxy.golang.org
 project_name: athens
 builds:
-- id: builds
-  goos:
-    - linux
-    - darwin
-  goarch:
-    - amd64
-    - arm64
-  main: cmd/proxy/main.go
-  binary: athens
-  ldflags:
-    - -X "github.com/gomods/athens/internal/build.version={{ .Tag }}"
-    - -X "github.com/gomods/athens/internal/build.buildDate={{ .Env.DATE }}"
+  - id: builds
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    main: cmd/proxy/main.go
+    binary: athens
+    ldflags:
+      - -X "github.com/dyammarcano/athens/internal/build.version={{ .Tag }}"
+      - -X "github.com/dyammarcano/athens/internal/build.buildDate={{ .Env.DATE }}"
 checksum:
   name_template: 'checksums.txt'
 snapshot:
@@ -26,5 +26,5 @@ changelog:
   sort: asc
   filters:
     exclude:
-    - '^docs:'
-    - '^test:'
+      - '^docs:'
+      - '^test:'

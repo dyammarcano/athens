@@ -11,8 +11,8 @@ import (
 	"github.com/aws/aws-sdk-go-v2/credentials/endpointcreds"
 	"github.com/aws/aws-sdk-go-v2/feature/s3/manager"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/errors"
 )
 
 // Storage implements (./pkg/storage).Backend and

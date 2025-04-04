@@ -5,9 +5,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
-	"github.com/gomods/athens/internal/paths"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/paths"
 	"github.com/minio/minio-go/v6"
 )
 
@@ -15,8 +14,8 @@ import (
 // It returns a list of modules and versions contained in the storage.
 func (s *storageImpl) Catalog(ctx context.Context, token string, pageSize int) ([]paths.AllPathParams, string, error) {
 	const op errors.Op = "minio.Catalog"
-	_, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//_, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	res := make([]paths.AllPathParams, 0)
 	count := pageSize
 	for count > 0 {

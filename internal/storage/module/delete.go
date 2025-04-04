@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/errors"
 	"github.com/hashicorp/go-multierror"
 )
 

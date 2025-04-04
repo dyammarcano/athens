@@ -3,8 +3,7 @@ package mongo
 import (
 	"context"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
+	"github.com/dyammarcano/athens/internal/errors"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo/gridfs"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -13,8 +12,8 @@ import (
 // Delete removes a specific version of a module.
 func (s *ModuleStore) Delete(ctx context.Context, module, version string) error {
 	const op errors.Op = "mongo.Delete"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	exists, err := s.Exists(ctx, module, version)
 	if err != nil {
 		return errors.E(op, errors.M(module), errors.V(version), errors.KindNotFound)

@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/gomods/athens/internal/download/mode"
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/log"
-	"github.com/gomods/athens/internal/paths"
+	"github.com/dyammarcano/athens/internal/download/mode"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/log"
+	"github.com/dyammarcano/athens/internal/paths"
 )
 
 // PathLatest URL.

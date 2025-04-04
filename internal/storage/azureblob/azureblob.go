@@ -12,10 +12,9 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/policy"
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	"github.com/Azure/azure-storage-blob-go/azblob"
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/storage"
 )
 
 type azureBlobStoreClient struct {
@@ -81,7 +80,7 @@ func newBlobStoreClient(accountURL *url.URL, accountName, accountKey, credScope,
 	return cl, nil
 }
 
-// Storage implements (github.com/gomods/athens/pkg/storage).Saver and
+// Storage implements (github.com/dyammarcano/athens/pkg/storage).Saver and
 // also provides a function to fetch the location of a module.
 type Storage struct {
 	client  *azureBlobStoreClient
@@ -110,13 +109,19 @@ func (c *azureBlobStoreClient) BlobExists(ctx context.Context, path string) (boo
 	const op errors.Op = "azureblob.BlobExists"
 	// TODO: Any better way of doing this ?
 	blobURL := c.containerURL.NewBlockBlobURL(path)
-	_, err := blobURL.GetProperties(ctx, azblob.BlobAccessConditions{})
+	_, err := blobURL.GetProperties(ctx, azblob.BlobAccessConditions{}, azblob.ClientProvidedKeyOptions{})
 	if err != nil {
-		var serr azblob.StorageError
-		if !errors.AsErr(err, &serr) {
+		var seer azblob.StorageError
+		defer func(Body io.ReadCloser) {
+			if err := Body.Close(); err != nil {
+				fmt.Printf("error closing body: %s", err)
+			}
+		}(seer.Response().Body)
+
+		if !errors.AsErr(err, &seer) {
 			return false, errors.E(op, fmt.Errorf("error in casting to azure error type %w", err))
 		}
-		if serr.Response().StatusCode == http.StatusNotFound {
+		if seer.Response().StatusCode == http.StatusNotFound {
 			return false, nil
 		}
 
@@ -129,7 +134,7 @@ func (c *azureBlobStoreClient) BlobExists(ctx context.Context, path string) (boo
 func (c *azureBlobStoreClient) ReadBlob(ctx context.Context, path string) (storage.SizeReadCloser, error) {
 	const op errors.Op = "azureblob.ReadBlob"
 	blobURL := c.containerURL.NewBlockBlobURL(path)
-	downloadResponse, err := blobURL.Download(ctx, 0, 0, azblob.BlobAccessConditions{}, false)
+	downloadResponse, err := blobURL.Download(ctx, 0, 0, azblob.BlobAccessConditions{}, false, azblob.ClientProvidedKeyOptions{})
 	if err != nil {
 		return nil, errors.E(op, err)
 	}
@@ -173,8 +178,8 @@ func (c *azureBlobStoreClient) DeleteBlob(ctx context.Context, path string) erro
 // UploadWithContext uploads a blob to the container.
 func (c *azureBlobStoreClient) UploadWithContext(ctx context.Context, path, contentType string, content io.Reader) error {
 	const op errors.Op = "azureblob.UploadWithContext"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	blobURL := c.containerURL.NewBlockBlobURL(path)
 	bufferSize := 1 * 1024 * 1024 // Size of the rotating buffers that are used when uploading
 	maxBuffers := 3               // Number of rotating buffers that are used when uploading

@@ -3,9 +3,9 @@ package download
 import (
 	"net/http"
 
-	"github.com/gomods/athens/internal/download/mode"
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/log"
+	"github.com/dyammarcano/athens/internal/download/mode"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/log"
 )
 
 // PathVersionInfo URL.

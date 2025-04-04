@@ -12,11 +12,13 @@ that GOPATH/bin is on your path, and that you have enabled the [Go
 Modules](https://github.com/golang/go/wiki/Modules) feature.
 
 **Bash**
+
 ```bash
 export GO111MODULE=on
 ```
 
 **PowerShell**
+
 ```powershell
 $env:GO111MODULE = "on"
 ```
@@ -24,7 +26,7 @@ $env:GO111MODULE = "on"
 Next, use git and Go to install and run the Athens proxy in a background process.
 
 ```console
-$ git clone https://github.com/gomods/athens
+$ git clone https://github.com/dyammarcano/athens
 $ cd athens/cmd/proxy
 $ go install
 $ proxy &
@@ -36,11 +38,13 @@ INFO[0000] Starting application at http://127.0.0.1:3000
 Next, you will need to configure Go to use the Athens proxy!
 
 **Bash**
+
 ```bash
 export GOPROXY=http://127.0.0.1:3000
 ```
 
 **PowerShell**
+
 ```powershell
 $env:GOPROXY = "http://127.0.0.1:3000"
 ```
@@ -60,7 +64,8 @@ The 🦁 says rawr!
 ```
 
 The output from `go run .` includes attempts to find the **github.com/athens-artifacts/samplelib** dependency. Since the
-proxy was run in the background, you should also see output from Athens indicating that it is handling requests for the dependency.
+proxy was run in the background, you should also see output from Athens indicating that it is handling requests for the
+dependency.
 
 This should give you an overview of what using Athens is like!
 

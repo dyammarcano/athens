@@ -8,12 +8,12 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/service/s3/types"
 	"github.com/aws/smithy-go"
-	"github.com/gomods/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/errors"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/storage/compliance"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/storage/compliance"
 )
 
 func TestBackend(t *testing.T) {

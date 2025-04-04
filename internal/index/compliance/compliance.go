@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/index"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/index"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"github.com/technosophos/moniker"

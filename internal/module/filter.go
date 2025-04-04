@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gomods/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/errors"
 )
 
 var (

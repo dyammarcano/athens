@@ -7,14 +7,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gomods/athens/internal/download/mode"
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/log"
-	"github.com/gomods/athens/internal/module"
-	"github.com/gomods/athens/internal/observ"
-	"github.com/gomods/athens/internal/requestid"
-	"github.com/gomods/athens/internal/stash"
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/download/mode"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/log"
+	"github.com/dyammarcano/athens/internal/module"
+	"github.com/dyammarcano/athens/internal/requestid"
+	"github.com/dyammarcano/athens/internal/stash"
+	"github.com/dyammarcano/athens/internal/storage"
 )
 
 // Protocol is the download protocol which mirrors
@@ -82,8 +81,8 @@ type protocol struct {
 
 func (p *protocol) List(ctx context.Context, mod string) ([]string, error) {
 	const op errors.Op = "protocol.List"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 
 	var strList, goList []string
 	var sErr, goErr error
@@ -181,8 +180,8 @@ func removePseudoVersions(allVersions []string) []string {
 
 func (p *protocol) Latest(ctx context.Context, mod string) (*storage.RevInfo, error) {
 	const op errors.Op = "protocol.Latest"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	if p.networkMode == Offline {
 		// Go never pings the /@latest endpoint _first_. It always tries /list and if that
 		// endpoint returns an empty list then it fallsback to calling /@latest.
@@ -198,8 +197,8 @@ func (p *protocol) Latest(ctx context.Context, mod string) (*storage.RevInfo, er
 
 func (p *protocol) Info(ctx context.Context, mod, ver string) ([]byte, error) {
 	const op errors.Op = "protocol.Info"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	info, err := p.storage.Info(ctx, mod, ver)
 	if errors.IsNotFoundErr(err) {
 		err = p.processDownload(ctx, mod, ver, func(newVer string) error {
@@ -216,8 +215,8 @@ func (p *protocol) Info(ctx context.Context, mod, ver string) ([]byte, error) {
 
 func (p *protocol) GoMod(ctx context.Context, mod, ver string) ([]byte, error) {
 	const op errors.Op = "protocol.GoMod"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	goMod, err := p.storage.GoMod(ctx, mod, ver)
 	if errors.IsNotFoundErr(err) {
 		err = p.processDownload(ctx, mod, ver, func(newVer string) error {
@@ -233,8 +232,8 @@ func (p *protocol) GoMod(ctx context.Context, mod, ver string) ([]byte, error) {
 
 func (p *protocol) Zip(ctx context.Context, mod, ver string) (storage.SizeReadCloser, error) {
 	const op errors.Op = "protocol.Zip"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	zip, err := p.storage.Zip(ctx, mod, ver)
 	if errors.IsNotFoundErr(err) {
 		err = p.processDownload(ctx, mod, ver, func(newVer string) error {

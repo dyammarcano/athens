@@ -1,27 +1,25 @@
 package actions
 
 import (
-	"context"
-	"errors"
 	"fmt"
 	"net/http"
 	"net/url"
 	"path"
 	"strings"
 
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/download"
-	"github.com/gomods/athens/internal/download/addons"
-	"github.com/gomods/athens/internal/download/mode"
-	"github.com/gomods/athens/internal/index"
-	"github.com/gomods/athens/internal/index/mem"
-	"github.com/gomods/athens/internal/index/mysql"
-	"github.com/gomods/athens/internal/index/nop"
-	"github.com/gomods/athens/internal/index/postgres"
-	"github.com/gomods/athens/internal/log"
-	"github.com/gomods/athens/internal/module"
-	"github.com/gomods/athens/internal/stash"
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/download"
+	"github.com/dyammarcano/athens/internal/download/addons"
+	"github.com/dyammarcano/athens/internal/download/mode"
+	"github.com/dyammarcano/athens/internal/index"
+	"github.com/dyammarcano/athens/internal/index/mem"
+	"github.com/dyammarcano/athens/internal/index/mysql"
+	"github.com/dyammarcano/athens/internal/index/nop"
+	"github.com/dyammarcano/athens/internal/index/postgres"
+	"github.com/dyammarcano/athens/internal/log"
+	"github.com/dyammarcano/athens/internal/module"
+	"github.com/dyammarcano/athens/internal/stash"
+	"github.com/dyammarcano/athens/internal/storage"
 	"github.com/gorilla/mux"
 	"github.com/spf13/afero"
 )
@@ -129,53 +127,53 @@ func addProxyRoutes(
 }
 
 // athensLoggerForRedis implements pkg/stash.RedisLogger.
-type athensLoggerForRedis struct {
-	logger *log.Logger
-}
-
-func (l *athensLoggerForRedis) Printf(ctx context.Context, format string, v ...any) {
-	l.logger.WithContext(ctx).Printf(format, v...)
-}
+//type athensLoggerForRedis struct {
+//	logger *log.Logger
+//}
+//
+//func (l *athensLoggerForRedis) Printf(ctx context.Context, format string, v ...any) {
+//	l.logger.WithContext(ctx).Printf(format, v...)
+//}
 
 func getSingleFlight(l *log.Logger, c *config.Config, s storage.Backend, checker storage.Checker) (stash.Wrapper, error) {
 	switch c.SingleFlightType {
 	case "", "memory":
 		return stash.WithSingleflight, nil
-	case "etcd":
-		if c.SingleFlight == nil || c.SingleFlight.Etcd == nil {
-			return nil, errors.New("etcd config must be present")
-		}
-		endpoints := strings.Split(c.SingleFlight.Etcd.Endpoints, ",")
-		return stash.WithEtcd(endpoints, checker)
-	case "redis":
-		if c.SingleFlight == nil || c.SingleFlight.Redis == nil {
-			return nil, errors.New("redis config must be present")
-		}
-		return stash.WithRedisLock(
-			&athensLoggerForRedis{logger: l},
-			c.SingleFlight.Redis.Endpoint,
-			c.SingleFlight.Redis.Password,
-			checker,
-			c.SingleFlight.Redis.LockConfig)
-	case "redis-sentinel":
-		if c.SingleFlight == nil || c.SingleFlight.RedisSentinel == nil {
-			return nil, errors.New("redis config must be present")
-		}
-		return stash.WithRedisSentinelLock(
-			&athensLoggerForRedis{logger: l},
-			c.SingleFlight.RedisSentinel.Endpoints,
-			c.SingleFlight.RedisSentinel.MasterName,
-			c.SingleFlight.RedisSentinel.SentinelPassword,
-			c.SingleFlight.RedisSentinel.RedisUsername,
-			c.SingleFlight.RedisSentinel.RedisPassword,
-			checker,
-			c.SingleFlight.RedisSentinel.LockConfig,
-		)
-	case "gcp":
-		if c.StorageType != "gcp" {
-			return nil, fmt.Errorf("gcp SingleFlight only works with a gcp storage type and not: %v", c.StorageType)
-		}
-		return stash.WithGCSLock(c.SingleFlight.GCP.StaleThreshold, s)
+	//case "etcd":
+	//	if c.SingleFlight == nil || c.SingleFlight.Etcd == nil {
+	//		return nil, errors.New("etcd config must be present")
+	//	}
+	//	endpoints := strings.Split(c.SingleFlight.Etcd.Endpoints, ",")
+	//	return stash.WithEtcd(endpoints, checker)
+	//case "redis":
+	//	if c.SingleFlight == nil || c.SingleFlight.Redis == nil {
+	//		return nil, errors.New("redis config must be present")
+	//	}
+	//	return stash.WithRedisLock(
+	//		&athensLoggerForRedis{logger: l},
+	//		c.SingleFlight.Redis.Endpoint,
+	//		c.SingleFlight.Redis.Password,
+	//		checker,
+	//		c.SingleFlight.Redis.LockConfig)
+	//case "redis-sentinel":
+	//	if c.SingleFlight == nil || c.SingleFlight.RedisSentinel == nil {
+	//		return nil, errors.New("redis config must be present")
+	//	}
+	//	return stash.WithRedisSentinelLock(
+	//		&athensLoggerForRedis{logger: l},
+	//		c.SingleFlight.RedisSentinel.Endpoints,
+	//		c.SingleFlight.RedisSentinel.MasterName,
+	//		c.SingleFlight.RedisSentinel.SentinelPassword,
+	//		c.SingleFlight.RedisSentinel.RedisUsername,
+	//		c.SingleFlight.RedisSentinel.RedisPassword,
+	//		checker,
+	//		c.SingleFlight.RedisSentinel.LockConfig,
+	//	)
+	//case "gcp":
+	//	if c.StorageType != "gcp" {
+	//		return nil, fmt.Errorf("gcp SingleFlight only works with a gcp storage type and not: %v", c.StorageType)
+	//	}
+	//	return stash.WithGCSLock(c.SingleFlight.GCP.StaleThreshold, s)
 	case "azureblob":
 		if c.StorageType != "azureblob" {
 			return nil, fmt.Errorf("azureblob SingleFlight only works with a azureblob storage type and not: %v", c.StorageType)

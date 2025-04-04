@@ -3,9 +3,8 @@ package mongo
 import (
 	"context"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/storage"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/gridfs"
@@ -15,8 +14,8 @@ import (
 // Info implements storage.Getter.
 func (s *ModuleStore) Info(ctx context.Context, module, vsn string) ([]byte, error) {
 	const op errors.Op = "mongo.Info"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 
 	result, err := query(ctx, s, module, vsn)
 	if err != nil {
@@ -29,8 +28,8 @@ func (s *ModuleStore) Info(ctx context.Context, module, vsn string) ([]byte, err
 // GoMod implements storage.Getter.
 func (s *ModuleStore) GoMod(ctx context.Context, module, vsn string) ([]byte, error) {
 	const op errors.Op = "mongo.GoMod"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 
 	result, err := query(ctx, s, module, vsn)
 	if err != nil {
@@ -43,8 +42,8 @@ func (s *ModuleStore) GoMod(ctx context.Context, module, vsn string) ([]byte, er
 // Zip implements storage.Getter.
 func (s *ModuleStore) Zip(ctx context.Context, module, vsn string) (storage.SizeReadCloser, error) {
 	const op errors.Op = "mongo.Zip"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 
 	zipName := s.gridFileName(module, vsn)
 	db := s.client.Database(s.db)
@@ -83,8 +82,8 @@ func (s *ModuleStore) Zip(ctx context.Context, module, vsn string) (storage.Size
 // Query connects to and queries storage module.
 func query(ctx context.Context, s *ModuleStore, module, vsn string) (*storage.Module, error) {
 	const op errors.Op = "mongo.query"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 
 	c := s.client.Database(s.db).Collection(s.coll)
 

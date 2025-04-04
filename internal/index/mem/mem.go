@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/index"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/index"
 )
 
 // New returns a new in-memory indexer.

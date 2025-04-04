@@ -5,8 +5,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/gomods/athens/internal/module"
-	"github.com/gomods/athens/internal/paths"
+	"github.com/dyammarcano/athens/internal/module"
+	"github.com/dyammarcano/athens/internal/paths"
 	"github.com/gorilla/mux"
 )
 

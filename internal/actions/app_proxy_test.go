@@ -9,10 +9,10 @@ import (
 	"testing"
 	"text/template"
 
-	"github.com/gomods/athens/internal/build"
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/log"
-	"github.com/gomods/athens/internal/storage/mem"
+	"github.com/dyammarcano/athens/internal/build"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/log"
+	"github.com/dyammarcano/athens/internal/storage/mem"
 	"github.com/gorilla/mux"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -92,7 +92,7 @@ func TestProxyRoutes(t *testing.T) {
 		{"GET", "/sumdb/sum.rust-lang.org/supported", "", func(t *testing.T, req *http.Request, resp *http.Response) {
 			assert.Equal(t, http.StatusNotFound, resp.StatusCode)
 		}},
-		{"GET", "/sumdb/sum.golang.org/lookup/github.com/gomods/athens", "", func(t *testing.T, req *http.Request, resp *http.Response) {
+		{"GET", "/sumdb/sum.golang.org/lookup/github.com/dyammarcano/athens", "", func(t *testing.T, req *http.Request, resp *http.Response) {
 			assert.Equal(t, http.StatusForbidden, resp.StatusCode)
 		}},
 	}

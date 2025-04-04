@@ -10,37 +10,39 @@ The Athens proxy supports many storage types:
 
 - [Storage](#storage)
 - [Memory](#memory)
-      - [Configuration:](#configuration)
+    - [Configuration:](#configuration)
 - [Disk](#disk)
-      - [Configuration:](#configuration-1)
+    - [Configuration:](#configuration-1)
 - [Mongo](#mongo)
-      - [Configuration:](#configuration-2)
+    - [Configuration:](#configuration-2)
 - [Google Cloud Storage](#google-cloud-storage)
-      - [Configuration:](#configuration-3)
+    - [Configuration:](#configuration-3)
 - [AWS S3](#aws-s3)
-      - [Configuration:](#configuration-4)
+    - [Configuration:](#configuration-4)
 - [Minio](#minio)
-      - [Configuration:](#configuration-5)
-    - [DigitalOcean Spaces](#digitalocean-spaces)
-      - [Configuration:](#configuration-6)
-    - [Alibaba OSS](#alibaba-oss)
-      - [Configuration:](#configuration-7)
+    - [Configuration:](#configuration-5)
+        - [DigitalOcean Spaces](#digitalocean-spaces)
+            - [Configuration:](#configuration-6)
+        - [Alibaba OSS](#alibaba-oss)
+            - [Configuration:](#configuration-7)
 - [Azure Blob Storage](#azure-blob-storage)
-      - [Configuration:](#configuration-8)
+    - [Configuration:](#configuration-8)
 - [External Storage](#external-storage)
-      - [Configuration:](#configuration-9)
+    - [Configuration:](#configuration-9)
 - [Running multiple Athens pointed at the same storage](#running-multiple-athens-pointed-at-the-same-storage)
-  - [Using etcd as the single flight mechanism](#using-etcd-as-the-single-flight-mechanism)
-  - [Using redis as the single flight mechanism](#using-redis-as-the-single-flight-mechanism)
-    - [Direct connection to redis](#direct-connection-to-redis)
-    - [Connecting to redis via redis sentinel](#connecting-to-redis-via-redis-sentinel)
+    - [Using etcd as the single flight mechanism](#using-etcd-as-the-single-flight-mechanism)
+    - [Using redis as the single flight mechanism](#using-redis-as-the-single-flight-mechanism)
+        - [Direct connection to redis](#direct-connection-to-redis)
+        - [Connecting to redis via redis sentinel](#connecting-to-redis-via-redis-sentinel)
 
-All of them can be configured using `config.toml` file. You need to set a valid driver in `StorageType` value or you can set it in environment variable `ATHENS_STORAGE_TYPE` on your server.
+All of them can be configured using `config.toml` file. You need to set a valid driver in `StorageType` value or you can
+set it in environment variable `ATHENS_STORAGE_TYPE` on your server.
 Also for most of the drivers you need to provide additional configuration data which will be described below.
 
 ## Memory
 
-This storage doesn't need any specific configuration and it's also used by default in the Athens project. It writes all of data into local disk into `tmp` dir.
+This storage doesn't need any specific configuration and it's also used by default in the Athens project. It writes all
+of data into local disk into `tmp` dir.
 
 **This storage type should only be used for development purposes!**
 
@@ -52,9 +54,11 @@ This storage doesn't need any specific configuration and it's also used by defau
 
 ## Disk
 
-Disk storage allows modules to be stored on a file system. The location on disk where modules will be stored can be configured.
+Disk storage allows modules to be stored on a file system. The location on disk where modules will be stored can be
+configured.
 
->You can pre-fill disk-based storage to enable Athens deployments that have no access to the internet. See [here](/configuration/prefill-disk-cache) for instructions on how to do that.
+> You can pre-fill disk-based storage to enable Athens deployments that have no access to the internet.
+> See [here](/configuration/prefill-disk-cache) for instructions on how to do that.
 
 ##### Configuration:
 
@@ -70,7 +74,8 @@ where `/path/on/disk` is your desired location. Also it can be set using `ATHENS
 
 ## Mongo
 
-This driver uses a [Mongo](https://www.mongodb.com/) server as data storage. On start this driver will create an `athens` database and `module` collection on your Mongo server.
+This driver uses a [Mongo](https://www.mongodb.com/) server as data storage. On start this driver will create an
+`athens` database and `module` collection on your Mongo server.
 
 ##### Configuration:
 
@@ -104,10 +109,13 @@ This driver uses a [Mongo](https://www.mongodb.com/) server as data storage. On 
             # Allows for use of custom collection 
             # Env override: ATHENS_MONGO_DEFAULT_COLLECTION
             DefaultCollectionName = modules
+
 ## Google Cloud Storage
 
-This driver uses [Google Cloud Storage](https://cloud.google.com/storage/) and assumes that you already have an `account` and `bucket` in it.
-If you never used Google Cloud Storage there is [quick guide](https://cloud.google.com/storage/docs/creating-buckets#storage-create-bucket-console)
+This driver uses [Google Cloud Storage](https://cloud.google.com/storage/) and assumes that you already have an
+`account` and `bucket` in it.
+If you never used Google Cloud Storage there
+is [quick guide](https://cloud.google.com/storage/docs/creating-buckets#storage-create-bucket-console)
 how to create `bucket` inside it.
 
 ##### Configuration:
@@ -128,9 +136,15 @@ how to create `bucket` inside it.
 
 ## AWS S3
 
-This driver is using the [AWS S3](https://aws.amazon.com/s3/) and assumes that you already have `account` and `bucket` created in it.
-If you never used Amazon Web Services there is [quick guide](https://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html) how to create `bucket` inside it.
-After this you can pass your credentials inside `config.toml` file.  If the access key ID and secret access key are not specified in `config.toml`, the driver will attempt to load credentials for the default profile from the [AWS CLI configuration file](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) created during installation.
+This driver is using the [AWS S3](https://aws.amazon.com/s3/) and assumes that you already have `account` and `bucket`
+created in it.
+If you never used Amazon Web Services there
+is [quick guide](https://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html) how to create `bucket` inside
+it.
+After this you can pass your credentials inside `config.toml` file. If the access key ID and secret access key are not
+specified in `config.toml`, the driver will attempt to load credentials for the default profile from
+the [AWS CLI configuration file](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) created
+during installation.
 
 ##### Configuration:
 
@@ -209,7 +223,11 @@ After this you can pass your credentials inside `config.toml` file.  If the acce
 
 ## Minio
 
-[Minio](https://www.minio.io/) is an open source object storage server that provides an interface for S3 compatible block storages. If you have never used minio, you can read this [quick start guide](https://docs.minio.io/).  Any S3 compatible object storage is supported by Athens through the minio interface. Below, you can find different configuration options we provide for Minio. Example configuration for Digital Ocean and Alibaba OSS block storages are provided below.
+[Minio](https://www.minio.io/) is an open source object storage server that provides an interface for S3 compatible
+block storages. If you have never used minio, you can read this [quick start guide](https://docs.minio.io/). Any S3
+compatible object storage is supported by Athens through the minio interface. Below, you can find different
+configuration options we provide for Minio. Example configuration for Digital Ocean and Alibaba OSS block storages are
+provided below.
 
 ##### Configuration:
 
@@ -242,7 +260,9 @@ After this you can pass your credentials inside `config.toml` file.  If the acce
 
 #### DigitalOcean Spaces
 
-For Athens to communicate with [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/), we are using Minio driver because DO Spaces tries to be [fully compatible with it](https://developers.digitalocean.com/documentation/spaces/).
+For Athens to communicate with [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/), we are using Minio
+driver because DO Spaces tries to
+be [fully compatible with it](https://developers.digitalocean.com/documentation/spaces/).
 Also configuration for this storage looks almost the same in our proxy as for [Minio](#minio).
 
 ##### Configuration:
@@ -279,7 +299,8 @@ Also configuration for this storage looks almost the same in our proxy as for [M
 
 #### Alibaba OSS
 
-For Athens to communicate with [Alibaba Cloud Object Storage Service](https://www.alibabacloud.com/product/oss), we are using Minio driver.
+For Athens to communicate with [Alibaba Cloud Object Storage Service](https://www.alibabacloud.com/product/oss), we are
+using Minio driver.
 Also configuration for this storage looks almost the same in our proxy as for [Minio](#minio).
 
 ##### Configuration:
@@ -312,16 +333,15 @@ Also configuration for this storage looks almost the same in our proxy as for [M
 
 ## Azure Blob Storage
 
-This driver uses [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) 
+This driver uses [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/)
 
 > If you never used Azure Blog Storage, here is a [quickstart](https://aka.ms/azureblob-quickstart)
 
 It assumes that you already have the following:
 
 - [An Azure storage account](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [The credentials (storage account key)](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)  
+- [The credentials (storage account key)](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)
 - A container (to store blobs)
-
 
 ##### Configuration:
 
@@ -353,12 +373,16 @@ It assumes that you already have the following:
 
 ## External Storage
 
-External storage lets Athens connect to your own implementation of a storage backend. 
-All you have to do is implement the [storage.Backend](https://github.com/gomods/athens/blob/main/pkg/storage/backend.go#L4) interface and run it behind an http server. 
+External storage lets Athens connect to your own implementation of a storage backend.
+All you have to do is implement
+the [storage.Backend](https://github.com/dyammarcano/athens/blob/main/pkg/storage/backend.go#L4) interface and run it
+behind
+an http server.
 
 Once you implement the backend server, you must then configure Athens to use that storage backend as such:
 
 ##### Configuration:
+
     # Env override: ATHENS_STORAGE_TYPE
     StorageType = "external"
 
@@ -367,25 +391,24 @@ Once you implement the backend server, you must then configure Athens to use tha
             # Env override: ATHENS_EXTERNAL_STORAGE_URL
             URL = "http://localhost:9090"
 
-Athens provides a convenience wrapper that lets you implement a storage backend with ease. See the following example: 
-
+Athens provides a convenience wrapper that lets you implement a storage backend with ease. See the following example:
 
 ```golang
 package main
 
 import (
-    "github.com/gomods/athens/internal/storage"
-    "github.com/gomods/athens/internal/storage/external"
+	"github.com/dyammarcano/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/storage/external"
 )
 
 // TODO: implement storage.Backend
 type myCustomStorage struct {
-    storage.Backend
+	storage.Backend
 }
 
 func main() {
-    handler := external.NewServer(&myCustomStorage{})
-    http.ListenAndServe(":9090", handler)
+	handler := external.NewServer(&myCustomStorage{})
+	http.ListenAndServe(":9090", handler)
 }
 ```
 
@@ -415,7 +438,7 @@ no extra configuration.
 
 Using the `etcd` mechanism is very simple, just a comma separated list of etcd endpoints.
 The recommend configuration is 3 endpoints, however, more can be used.
-  
+
     SingleFlightType = "etcd"
 
     [SingleFlight]
@@ -462,7 +485,9 @@ a normal `host:port` pair. If a password is supplied in the redis url, in additi
 configuration option, the two values must match otherwise Athens will fail to start.
 
 ##### Customizing lock configurations:
-If you would like to customize the distributed lock options then you can optionally override the default lock config to better suit your use-case:
+
+If you would like to customize the distributed lock options then you can optionally override the default lock config to
+better suit your use-case:
 
     [SingleFlight.Redis]
         ...
@@ -477,7 +502,8 @@ If you would like to customize the distributed lock options then you can optiona
             # Env override: ATHENS_REDIS_LOCK_MAX_RETRIES
             MaxRetries = 10
 
-Customizations may be required in some cases for eg, you can set a higher TTL if it usually takes longer than 5 mins to fetch the modules in your case.
+Customizations may be required in some cases for eg, you can set a higher TTL if it usually takes longer than 5 mins to
+fetch the modules in your case.
 
 #### Connecting to redis via redis sentinel
 
@@ -496,7 +522,8 @@ As redis-sentinel is a more complex set up of redis, it requires more configurat
 Required configuration:
 
 - `Endpoints` is a list of redis-sentinel endpoints to connect to, typically 3, but more can be used
-- `MasterName` is the named master instance, as configured in the `redis-sentinel` [configuration](https://redis.io/topics/sentinel#configuring-sentinel)
+- `MasterName` is the named master instance, as configured in the
+  `redis-sentinel` [configuration](https://redis.io/topics/sentinel#configuring-sentinel)
 
 Optionally, like `redis`, you can also specify a password to connect to the `redis-sentinel` endpoints with
 
@@ -516,7 +543,6 @@ Optionally, like `redis`, you can also specify a password to connect to the `red
           SentinelPassword = "sekret"
 
 Distributed lock options can be customised for redis sentinal as well, in a similar manner as described above for redis.
-
 
 ### Using GCP as a singleflight mechanism
 

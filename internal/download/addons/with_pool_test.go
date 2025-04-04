@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gomods/athens/internal/download"
-	"github.com/gomods/athens/internal/paths"
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/download"
+	"github.com/dyammarcano/athens/internal/paths"
+	"github.com/dyammarcano/athens/internal/storage"
 )
 
 // TestPoolLogic ensures that no

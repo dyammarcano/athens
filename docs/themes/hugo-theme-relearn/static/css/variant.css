@@ -25,7 +25,7 @@ a:focus,
 .anchor:focus,
 .topbar-button button:hover,
 .topbar-button button:active,
-.topbar-button button:focus{
+.topbar-button button:focus {
     color: var(--INTERNAL-MAIN-LINK-HOVER-color);
 }
 
@@ -99,9 +99,9 @@ a:focus,
 mark {
     background-image: linear-gradient(
         to right,
-        color-mix( in srgb, var(--INTERNAL-ACCENT-color) 20%, transparent ),
-        color-mix( in srgb, var(--INTERNAL-ACCENT-color) 90%, transparent ) 4%,
-        color-mix( in srgb, var(--INTERNAL-ACCENT-color) 40%, transparent )
+        color-mix(in srgb, var(--INTERNAL-ACCENT-color) 20%, transparent),
+        color-mix(in srgb, var(--INTERNAL-ACCENT-color) 90%, transparent) 4%,
+        color-mix(in srgb, var(--INTERNAL-ACCENT-color) 40%, transparent)
     );
 }
 
@@ -256,7 +256,7 @@ table {
     background-color: var(--INTERNAL-MAIN-BG-color);
 }
 
-.lightbox-back img{
+.lightbox-back img {
     background-color: var(--INTERNAL-MAIN-BG-color);
 }
 
@@ -267,6 +267,7 @@ table {
 .topbar-sidebar-divider {
     border-inline-start-color: var(--INTERNAL-MENU-TOPBAR-SEPARATOR-color);
 }
+
 @media screen and (max-width: 47.999rem) {
     .topbar-sidebar-divider {
         border-inline-start-color: transparent;
@@ -318,7 +319,7 @@ pre:not(.mermaid) .copy-to-clipboard-button:hover {
 .expand > label:focus,
 .expand > input:hover + label,
 .expand > input:active + label,
-.expand > input:focus + label{
+.expand > input:focus + label {
     color: var(--INTERNAL-MAIN-LINK-HOVER-color);
 }
 
@@ -326,6 +327,7 @@ pre:not(.mermaid) .copy-to-clipboard-button:hover {
     border-color: transparent;
     color: var(--INTERNAL-MAIN-LINK-color);
 }
+
 .svg-reset-button:hover {
     background-color: var(--INTERNAL-MAIN-LINK-color);
     border-color: var(--INTERNAL-MAIN-LINK-color);
@@ -413,7 +415,7 @@ pre:not(.mermaid) .copy-to-clipboard-button:hover {
     color: var(--VARIABLE-BOX-CAPTION-color);
 }
 
-.badge.cstyle.transparent{
+.badge.cstyle.transparent {
     --VARIABLE-BOX-BG-color: var(--INTERNAL-BOX-BG-color);
 }
 
@@ -425,6 +427,7 @@ article ul > li > input[type="checkbox"] {
 #R-body .tab-nav-button {
     color: var(--INTERNAL-MAIN-LINK-color);
 }
+
 #R-body .tab-nav-button:not(.active):hover,
 #R-body .tab-nav-button:not(.active):active,
 #R-body .tab-nav-button:not(.active):focus {
@@ -437,24 +440,26 @@ article ul > li > input[type="checkbox"] {
     color: var(--VARIABLE-BOX-TEXT-color);
 }
 
-#R-body .tab-nav-button > .tab-nav-text{
+#R-body .tab-nav-button > .tab-nav-text {
     border-bottom-color: var(--VARIABLE-BOX-color);
 }
-#R-body .tab-nav-button.active > .tab-nav-text{
+
+#R-body .tab-nav-button.active > .tab-nav-text {
     background-color: var(--VARIABLE-BOX-BG-color);
 }
+
 #R-body .tab-nav-button:not(.active):hover > .tab-nav-text,
 #R-body .tab-nav-button:not(.active):active > .tab-nav-text,
 #R-body .tab-nav-button:not(.active):focus > .tab-nav-text {
     border-bottom-color: var(--INTERNAL-MAIN-LINK-HOVER-color);
 }
 
-#R-body .tab-content{
+#R-body .tab-content {
     background-color: var(--VARIABLE-BOX-color);
     border-color: var(--VARIABLE-BOX-color);
 }
 
-#R-body .tab-content-text{
+#R-body .tab-content-text {
     background-color: var(--VARIABLE-BOX-BG-color);
     color: var(--VARIABLE-BOX-TEXT-color);
 }
@@ -465,26 +470,26 @@ article ul > li > input[type="checkbox"] {
 }
 
 .tab-panel-style.cstyle.transparent {
-    --VARIABLE-BOX-color: rgba( 134, 134, 134, .4 );
+    --VARIABLE-BOX-color: rgba(134, 134, 134, .4);
     --VARIABLE-BOX-BG-color: transparent;
 }
 
 #R-body .tab-panel-style.cstyle.initial.tab-nav-button.active,
 #R-body .tab-panel-style.cstyle.default.tab-nav-button.active,
-#R-body .tab-panel-style.cstyle.transparent.tab-nav-button.active{
+#R-body .tab-panel-style.cstyle.transparent.tab-nav-button.active {
     background-color: var(--VARIABLE-BOX-BG-color);
     border-left-color: var(--VARIABLE-BOX-color);
     border-right-color: var(--VARIABLE-BOX-color);
     border-top-color: var(--VARIABLE-BOX-color);
 }
 
-#R-body .tab-panel-style.cstyle.code.tab-nav-button:not(.active){
+#R-body .tab-panel-style.cstyle.code.tab-nav-button:not(.active) {
     --VARIABLE-BOX-color: var(--INTERNAL-BOX-NEUTRAL-color);
 }
 
 #R-body .tab-panel-style.cstyle.initial.tab-content,
 #R-body .tab-panel-style.cstyle.default.tab-content,
-#R-body .tab-panel-style.cstyle.transparent.tab-content{
+#R-body .tab-panel-style.cstyle.transparent.tab-content {
     background-color: var(--VARIABLE-BOX-BG-color);
 }
 
@@ -495,6 +500,7 @@ article ul > li > input[type="checkbox"] {
 #R-header-topbar {
     border-inline-end-color: var(--INTERNAL-MENU-TOPBAR-BORDER-color);
 }
+
 @media screen and (max-width: 47.999rem) {
     .mobile-support #R-header-topbar {
         border-inline-end-color: var(--INTERNAL-MENU-BORDER-color);
@@ -507,7 +513,7 @@ article ul > li > input[type="checkbox"] {
     border-inline-end-color: var(--INTERNAL-MENU-BORDER-color);
 }
 
-#R-sidebar ul.collapsible-menu li.active > a{
+#R-sidebar ul.collapsible-menu li.active > a {
     border-bottom-color: var(--INTERNAL-MENU-BORDER-color);
     border-top-color: var(--INTERNAL-MENU-BORDER-color);
     border-inline-start-color: var(--INTERNAL-MENU-BORDER-color);

@@ -5,10 +5,10 @@
 # You can override the Go version used to build the image.
 # See project Makefile if using make.
 # See docker --build-arg if building directly.
-ARG GOLANG_VERSION=1.23.5
+ARG GOLANG_VERSION=1.24.1
 ARG ALPINE_VERSION=3.20
 
-FROM golang:${GOLANG_VERSION}-alpine AS builder
+FROM docker.io/golang:${GOLANG_VERSION}-alpine AS builder
 
 ARG VERSION="unset" \
     TARGETARCH
@@ -18,30 +18,30 @@ ENV GOARCH=${TARGETARCH} \
     CGO_ENABLED=0 \
     GOPROXY="https://proxy.golang.org"
 
-WORKDIR $GOPATH/src/github.com/gomods/athens
+WORKDIR $GOPATH/src/github.com/dyammarcano/athens
 
 COPY . .
 
 RUN DATE="$(date -u +%Y-%m-%d-%H:%M:%S-%Z)" && \
     go build \
-    -ldflags "-X github.com/gomods/athens/pkg/build.version=$VERSION -X github.com/gomods/athens/pkg/build.buildDate=$DATE -s -w" \
+    -ldflags "-X github.com/dyammarcano/athens/pkg/build.version=$VERSION -X github.com/dyammarcano/athens/pkg/build.buildDate=$DATE -s -w" \
     -o /bin/athens-proxy ./cmd/proxy
 
-FROM alpine:${ALPINE_VERSION}
+FROM docker.io/alpine:${ALPINE_VERSION}
 ARG TARGETARCH
 
-ENV GOROOT="/usr/local/go" \
-    PATH=/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
-    GO111MODULE=on
+#ENV GOROOT="/usr/local/go" \
+#    PATH=/go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+#    GO111MODULE=on
 
 COPY --from=builder /bin/athens-proxy /bin/athens-proxy
-COPY --from=builder /go/src/github.com/gomods/athens/config.dev.toml /config/config.toml
-COPY --from=builder /usr/local/go/bin/go /usr/local/go/bin/go
-COPY --from=builder /usr/local/go/go.env /usr/local/go/go.env
+COPY --from=builder /go/src/github.com/dyammarcano/athens/config.dev.toml /config/config.toml
+#COPY --from=builder /usr/local/go/bin/go /usr/local/go/bin/go
+#COPY --from=builder /usr/local/go/go.env /usr/local/go/go.env
 
 RUN chmod 644 /config/config.toml
 
-# Add tini, see https://github.com/gomods/athens/issues/1155 for details.
+# Add tini, see https://github.com/dyammarcano/athens/issues/1155 for details.
 RUN apk add --update git git-lfs mercurial openssh-client subversion procps fossil tini
 
 # Add git-credential-github-app for native integration with GitHub Apps

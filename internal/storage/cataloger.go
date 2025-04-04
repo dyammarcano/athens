@@ -3,7 +3,7 @@ package storage
 import (
 	"context"
 
-	"github.com/gomods/athens/internal/paths"
+	"github.com/dyammarcano/athens/internal/paths"
 )
 
 // Cataloger is the interface that lists all the modules and version contained in the storage.

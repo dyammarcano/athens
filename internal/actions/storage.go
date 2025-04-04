@@ -1,23 +1,21 @@
 package actions
 
 import (
-	"context"
 	"fmt"
 	"net/http"
 	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/storage"
-	"github.com/gomods/athens/internal/storage/azureblob"
-	"github.com/gomods/athens/internal/storage/external"
-	"github.com/gomods/athens/internal/storage/fs"
-	"github.com/gomods/athens/internal/storage/gcp"
-	"github.com/gomods/athens/internal/storage/mem"
-	"github.com/gomods/athens/internal/storage/minio"
-	"github.com/gomods/athens/internal/storage/mongo"
-	"github.com/gomods/athens/internal/storage/s3"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/storage/azureblob"
+	"github.com/dyammarcano/athens/internal/storage/external"
+	"github.com/dyammarcano/athens/internal/storage/fs"
+	"github.com/dyammarcano/athens/internal/storage/mem"
+	"github.com/dyammarcano/athens/internal/storage/minio"
+	"github.com/dyammarcano/athens/internal/storage/mongo"
+	"github.com/dyammarcano/athens/internal/storage/s3"
 	"github.com/spf13/afero"
 )
 
@@ -48,11 +46,11 @@ func GetStorage(storageType string, storageConfig *config.Storage, timeout time.
 			return nil, errors.E(op, "Invalid Minio Storage Configuration")
 		}
 		return minio.NewStorage(storageConfig.Minio, timeout)
-	case "gcp":
-		if storageConfig.GCP == nil {
-			return nil, errors.E(op, "Invalid GCP Storage Configuration")
-		}
-		return gcp.New(context.Background(), storageConfig.GCP, timeout)
+	//case "gcp":
+	//	if storageConfig.GCP == nil {
+	//		return nil, errors.E(op, "Invalid GCP Storage Configuration")
+	//	}
+	//	return gcp.New(context.Background(), storageConfig.GCP, timeout)
 	case "s3":
 		if storageConfig.S3 == nil {
 			return nil, errors.E(op, "Invalid S3 Storage Configuration")

@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/gomods/athens/internal/download/mode"
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/log"
+	"github.com/dyammarcano/athens/internal/download/mode"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/log"
 )
 
 // PathVersionZip URL.

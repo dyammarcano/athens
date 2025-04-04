@@ -55,8 +55,8 @@ function processDirectory(directoryPath, oldDirectory, newDirectory, langs) {
             const newFileDirectory = path.join(newDirectory, fileLang, relSubDirectory);
             const newFilePath = path.join(newFileDirectory, fileName + '.' + fileExtension);
             try {
-              fs.mkdirSync(newFileDirectory, { recursive: true });
-              fs.cpSync(filePath, newFilePath, { recursive: true });
+              fs.mkdirSync(newFileDirectory, {recursive: true});
+              fs.cpSync(filePath, newFilePath, {recursive: true});
             } catch (err) {
               console.error(`Error copying file/directory ${filePath} to ${newFilePath}: ${err}`);
               return false;
@@ -68,7 +68,7 @@ function processDirectory(directoryPath, oldDirectory, newDirectory, langs) {
             if (!processDirectory(filePath, oldDirectory, newDirectory, langs)) {
               return false;
             }
-          } else if (stats.isFile()){
+          } else if (stats.isFile()) {
             // non-language files are a different beast: copy the file into all languages that don't have a language file
             const nonLangRegex = /^(.*?)(\.([^.]+))?$/;
             const nonLangMatch = file.match(nonLangRegex);
@@ -81,8 +81,8 @@ function processDirectory(directoryPath, oldDirectory, newDirectory, langs) {
                 const newFileDirectory = path.join(newDirectory, fileLang, relSubDirectory);
                 const newFilePath = path.join(newFileDirectory, fileName + '.' + fileExtension);
                 try {
-                  fs.mkdirSync(newFileDirectory, { recursive: true });
-                  fs.cpSync(filePath, newFilePath, { recursive: true });
+                  fs.mkdirSync(newFileDirectory, {recursive: true});
+                  fs.cpSync(filePath, newFilePath, {recursive: true});
                 } catch (err) {
                   console.error(`Error copying file ${filePath} to ${newFilePath}: ${err}`);
                   return false;
@@ -129,27 +129,29 @@ function runThatShit(contentDirectory) {
 
   // Make space for the conversion
   try {
-    fs.rmSync(targetDirectory, { recursive: true });
+    fs.rmSync(targetDirectory, {recursive: true});
   } catch (err) {
     try {
       fs.statSync(targetDirectory);
       console.error(`Error removing directory ${targetDirectory}: ${err}`);
       return false;
-    } catch (err) {}
+    } catch (err) {
+    }
   }
   try {
-    fs.rmSync(backupDirectory, { recursive: true });
+    fs.rmSync(backupDirectory, {recursive: true});
   } catch (err) {
     try {
       fs.statSync(backupDirectory);
       console.error(`Error removing directory ${backupDirectory}: ${err}`);
       return false;
-    } catch (err) {}
+    } catch (err) {
+    }
   }
 
   // convert that shit
   const langs = getLanguages(sourceDirectory);
-  if( !processDirectory(sourceDirectory, sourceDirectory, targetDirectory, langs) ){
+  if (!processDirectory(sourceDirectory, sourceDirectory, targetDirectory, langs)) {
     return false;
   }
 
@@ -157,7 +159,7 @@ function runThatShit(contentDirectory) {
   try {
     fs.renameSync(sourceDirectory, backupDirectory);
     fs.renameSync(targetDirectory, sourceDirectory);
-    fs.rmSync(backupDirectory, { recursive: true });
+    fs.rmSync(backupDirectory, {recursive: true});
   } catch (err) {
     console.error(`Error deleting/renaming directories: ${err}`);
     return false;

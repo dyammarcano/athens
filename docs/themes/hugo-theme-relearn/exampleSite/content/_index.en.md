@@ -11,7 +11,9 @@ A theme for [Hugo](https://gohugo.io/) designed for documentation.
 
 ## Motivation
 
-The theme is a fork of the great [Learn theme](https://github.com/matcornic/hugo-theme-learn) with the aim of fixing long outstanding bugs and adapting to latest Hugo features. As far as possible this theme tries to be a drop-in replacement for the Learn theme.
+The theme is a fork of the great [Learn theme](https://github.com/matcornic/hugo-theme-learn) with the aim of fixing
+long outstanding bugs and adapting to latest Hugo features. As far as possible this theme tries to be a drop-in
+replacement for the Learn theme.
 
 ## Features
 
@@ -20,7 +22,8 @@ The theme is a fork of the great [Learn theme](https://github.com/matcornic/hugo
   - Looks nice on paper (if it has to)
   - Usable offline, no external dependencies
   - [Usable from your local file system via `file://` protocol](basics/customization#file-system)
-  - Support for the [VSCode Front Matter extension](https://github.com/estruyf/vscode-front-matter) for on-premise CMS capabilities
+  - Support for the [VSCode Front Matter extension](https://github.com/estruyf/vscode-front-matter) for on-premise CMS
+    capabilities
   - [Support for Open Graph and Twitter Cards](basics/customization#social-media-meta-tags)
 - **Configurable theming and visuals**
   - [Configurable brand images](basics/branding#change-the-logo)
@@ -41,7 +44,9 @@ The theme is a fork of the great [Learn theme](https://github.com/matcornic/hugo
   - Hidden pages
 - **Multi language support**
   - [Full support for languages written right to left](cont/i18n)
-  - [Available languages](cont/i18n#basic-configuration): Arabic, Simplified Chinese, Traditional Chinese, Czech, Dutch, English, Finnish, French, German, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean, Polish, Portuguese, Romanian, Russian, Spanish, Swahili, Turkish, Vietnamese
+  - [Available languages](cont/i18n#basic-configuration): Arabic, Simplified Chinese, Traditional Chinese, Czech, Dutch,
+    English, Finnish, French, German, Hindi, Hungarian, Indonesian, Italian, Japanese, Korean, Polish, Portuguese,
+    Romanian, Russian, Spanish, Swahili, Turkish, Vietnamese
   - [Search support for mixed language content](cont/i18n#search)
 - **Additional Markdown features**
   - [Support for GFM (GitHub Flavored Markdown)](cont/markdown)
@@ -64,13 +69,17 @@ The theme is a fork of the great [Learn theme](https://github.com/matcornic/hugo
 
 ## Support
 
-To get support, feel free to open a new [discussion topic](https://github.com/McShelby/hugo-theme-relearn/discussions) or [issue report](https://github.com/McShelby/hugo-theme-relearn/issues) in the official repository on GitHub.
+To get support, feel free to open a new [discussion topic](https://github.com/McShelby/hugo-theme-relearn/discussions)
+or [issue report](https://github.com/McShelby/hugo-theme-relearn/issues) in the official repository on GitHub.
 
 ## Contributions
 
-Feel free to contribute to this documentation by just clicking the {{% button style="transparent" icon="pen" %}}{{% /button %}} _edit_ button displayed on top right of each page.
+Feel free to contribute to this documentation by just clicking the {{% button style="transparent" icon="pen" %}}{{%
+/button %}} _edit_ button displayed on top right of each page.
 
-You are most welcome to contribute bugfixes or new features by making pull requests to the [official repository](https://github.com/McShelby/hugo-theme-relearn). Check the [contribution guidelines](dev/contributing) first before starting.
+You are most welcome to contribute bugfixes or new features by making pull requests to
+the [official repository](https://github.com/McShelby/hugo-theme-relearn). Check
+the [contribution guidelines](dev/contributing) first before starting.
 
 ## License
 

@@ -3,13 +3,15 @@ package compliance
 import (
 	"bytes"
 	"context"
+	"crypto/rand"
 	"fmt"
 	"io"
-	"math/rand"
+	"math/big"
 	"testing"
+	"time"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/storage"
 	"github.com/stretchr/testify/require"
 )
 
@@ -29,9 +31,9 @@ func RunTests(t *testing.T, b storage.Backend, clearBackend func() error) {
 
 // testNotFound ensures that a storage Backend
 // returns a KindNotFound error when asking for
-// non existing modules.
+// non-existing modules.
 func testNotFound(t *testing.T, b storage.Backend) {
-	mod, ver := "github.com/gomods/athens", "yyy"
+	mod, ver := "github.com/dyammarcano/athens", "yyy"
 	ctx := context.Background()
 
 	err := b.Delete(ctx, mod, ver)
@@ -84,7 +86,9 @@ func testListSuffix(t *testing.T, b storage.Backend) {
 	defer func() {
 		for modname, versions := range modVers {
 			for _, version := range versions {
-				b.Delete(ctx, modname, version)
+				if err := b.Delete(ctx, modname, version); err != nil {
+					return
+				}
 			}
 		}
 	}()
@@ -104,7 +108,7 @@ func testListSuffix(t *testing.T, b storage.Backend) {
 func testList(t *testing.T, b storage.Backend) {
 	ctx := context.Background()
 
-	modname := "github.com/gomods/athens"
+	modname := "github.com/dyammarcano/athens"
 	versions := []string{"v1.1.0", "v1.2.0", "v1.3.0"}
 	for _, version := range versions {
 		mock := getMockModule()
@@ -120,7 +124,9 @@ func testList(t *testing.T, b storage.Backend) {
 	}
 	defer func() {
 		for _, ver := range versions {
-			b.Delete(ctx, modname, ver)
+			if err := b.Delete(ctx, modname, ver); err != nil {
+				return
+			}
 		}
 	}()
 	retVersions, err := b.List(ctx, modname)
@@ -131,12 +137,18 @@ func testList(t *testing.T, b storage.Backend) {
 // testGet saves and retrieves a module successfully.
 func testGet(t *testing.T, b storage.Backend) {
 	ctx := context.Background()
-	modname := "github.com/gomods/athens"
+	modname := "github.com/dyammarcano/athens"
 	ver := "v1.2.3"
 	mock := getMockModule()
 	zipBts, _ := io.ReadAll(mock.Zip)
-	b.Save(ctx, modname, ver, mock.Mod, bytes.NewReader(zipBts), mock.Info)
-	defer b.Delete(ctx, modname, ver)
+	if err := b.Save(ctx, modname, ver, mock.Mod, bytes.NewReader(zipBts), mock.Info); err != nil {
+		return
+	}
+	defer func(b storage.Backend, ctx context.Context, module, vsn string) {
+		if err := b.Delete(ctx, module, vsn); err != nil {
+			t.Logf("error deleting module %s version %s: %v", module, vsn, err)
+		}
+	}(b, ctx, modname, ver)
 
 	info, err := b.Info(ctx, modname, ver)
 	require.NoError(t, err)
@@ -156,12 +168,18 @@ func testGet(t *testing.T, b storage.Backend) {
 
 func testExists(t *testing.T, b storage.Backend) {
 	ctx := context.Background()
-	modname := "github.com/gomods/athens"
+	modname := "github.com/dyammarcano/athens"
 	ver := "v1.2.3"
 	mock := getMockModule()
 	zipBts, _ := io.ReadAll(mock.Zip)
-	b.Save(ctx, modname, ver, mock.Mod, bytes.NewReader(zipBts), mock.Info)
-	defer b.Delete(ctx, modname, ver)
+	if err := b.Save(ctx, modname, ver, mock.Mod, bytes.NewReader(zipBts), mock.Info); err != nil {
+		return
+	}
+	defer func(b storage.Backend, ctx context.Context, module, vsn string) {
+		if err := b.Delete(ctx, module, vsn); err != nil {
+			t.Logf("error deleting module %s version %s: %v", module, vsn, err)
+		}
+	}(b, ctx, modname, ver)
 	checker := storage.WithChecker(b)
 	exists, err := checker.Exists(ctx, modname, ver)
 	require.NoError(t, err)
@@ -176,7 +194,11 @@ func testShouldNotExist(t *testing.T, b storage.Backend) {
 	zipBts, _ := io.ReadAll(mock.Zip)
 	err := b.Save(ctx, mod, ver, mock.Mod, bytes.NewReader(zipBts), mock.Info)
 	require.NoError(t, err, "should successfully safe a mock module")
-	defer b.Delete(ctx, mod, ver)
+	defer func(b storage.Backend, ctx context.Context, module, vsn string) {
+		if err := b.Delete(ctx, module, vsn); err != nil {
+			t.Logf("error deleting module %s version %s: %v", module, vsn, err)
+		}
+	}(b, ctx, mod, ver)
 
 	prefixVer := "v1.2.3-pre"
 
@@ -189,11 +211,12 @@ func testShouldNotExist(t *testing.T, b storage.Backend) {
 
 // testDelete tests that a module can be deleted from a
 // storage Backend and the Exists method returns false
-// afterwards.
+// afterward.
 func testDelete(t *testing.T, b storage.Backend) {
 	ctx := context.Background()
-	modname := "github.com/gomods/athens"
-	version := fmt.Sprintf("%s%d", "delete", rand.Int())
+	modname := "github.com/dyammarcano/athens"
+	num, _ := rand.Int(rand.Reader, big.NewInt(time.Now().UnixNano()))
+	version := fmt.Sprintf("%s%d", "delete", num)
 
 	mock := getMockModule()
 	err := b.Save(ctx, modname, version, mock.Mod, mock.Zip, mock.Info)

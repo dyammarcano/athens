@@ -7,16 +7,15 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
+	"github.com/dyammarcano/athens/internal/errors"
 	"github.com/hashicorp/go-multierror"
 	minio "github.com/minio/minio-go/v6"
 )
 
 func (s *storageImpl) Save(ctx context.Context, module, vsn string, mod []byte, zip io.Reader, info []byte) error {
 	const op errors.Op = "storage.minio.Save"
-	_, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//_, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	dir := s.versionLocation(module, vsn)
 	modFileName := dir + "/" + "go.mod"
 	infoFileName := dir + "/" + vsn + ".info"

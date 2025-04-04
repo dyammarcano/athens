@@ -4,7 +4,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/gomods/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/errors"
 	"github.com/spf13/afero"
 )
 

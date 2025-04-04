@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/index"
 	"github.com/go-sql-driver/mysql"
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/index"
 )
 
 // New returns a new Indexer with a MySQL implementation.

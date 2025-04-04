@@ -3,9 +3,8 @@ package azureblob
 import (
 	"context"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
-	modupl "github.com/gomods/athens/internal/storage/module"
+	"github.com/dyammarcano/athens/internal/errors"
+	modupl "github.com/dyammarcano/athens/internal/storage/module"
 )
 
 // Delete implements the (./internal/storage).Deleter interface and
@@ -13,8 +12,8 @@ import (
 // if the version does not exist.
 func (s *Storage) Delete(ctx context.Context, module, version string) error {
 	const op errors.Op = "azureblob.Delete"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 
 	exists, err := s.Exists(ctx, module, version)
 	if err != nil {

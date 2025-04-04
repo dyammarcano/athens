@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/gomods/athens/internal/index"
+	"github.com/dyammarcano/athens/internal/index"
 )
 
 // New returns a no-op Indexer.

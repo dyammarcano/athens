@@ -5,16 +5,15 @@ import (
 	"os"
 	"strings"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
+	"github.com/dyammarcano/athens/internal/errors"
 	"github.com/spf13/afero"
 	"golang.org/x/mod/semver"
 )
 
 func (s *storageImpl) List(ctx context.Context, module string) ([]string, error) {
 	const op errors.Op = "fs.List"
-	_, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//_, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	loc := s.moduleLocation(module)
 	fileInfos, err := afero.ReadDir(s.filesystem, loc)
 	if err != nil {

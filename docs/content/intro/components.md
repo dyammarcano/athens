@@ -8,11 +8,13 @@ From a very high-level view, there are 3 major components of the system.
 
 ### Client
 
-The client is a user, powered by go binary with module support. At the moment of writing this document, it is [Go v1.12+](https://golang.org/dl).
+The client is a user, powered by go binary with module support. At the moment of writing this document, it
+is [Go v1.12+](https://golang.org/dl).
 
 ### VCS
 
-VCS is an external source of data for Athens. Athens scans various VCSs such as `github.com` and fetches sources from there.
+VCS is an external source of data for Athens. Athens scans various VCSs such as `github.com` and fetches sources from
+there.
 
 ### Proxy
 
@@ -22,4 +24,5 @@ We intend proxies to be deployed primarily inside of enterprises to:
 * Exclude access to public modules
 * Store public modules
 
-Importantly, a proxy is not intended to be a complete mirror of an upstream proxy. For public modules, its role is to store and provide access control.
+Importantly, a proxy is not intended to be a complete mirror of an upstream proxy. For public modules, its role is to
+store and provide access control.

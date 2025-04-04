@@ -4,13 +4,11 @@ import (
 	"context"
 	"time"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/index"
-	"github.com/gomods/athens/internal/log"
-	"github.com/gomods/athens/internal/module"
-	"github.com/gomods/athens/internal/observ"
-	"github.com/gomods/athens/internal/storage"
-	"go.opencensus.io/trace"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/index"
+	"github.com/dyammarcano/athens/internal/log"
+	"github.com/dyammarcano/athens/internal/module"
+	"github.com/dyammarcano/athens/internal/storage"
 )
 
 // Stasher has the job of taking a module
@@ -46,13 +44,14 @@ type stasher struct {
 
 func (s *stasher) Stash(ctx context.Context, mod, ver string) (string, error) {
 	const op errors.Op = "stasher.Stash"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	log.EntryFromContext(ctx).Debugf("saving %s@%s to storage...", mod, ver)
 
 	// create a new context that ditches whatever deadline the caller passed
 	// but keep the tracing info so that we can properly trace the whole thing.
-	ctx, cancel := context.WithTimeout(trace.NewContext(context.Background(), span), time.Minute*10)
+	//ctxTrace := trace.NewContext(context.Background(), span)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Minute*10)
 	defer cancel()
 	v, err := s.fetchModule(ctx, mod, ver)
 	if err != nil {

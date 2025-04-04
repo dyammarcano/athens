@@ -3,9 +3,8 @@ package mongo
 import (
 	"context"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/storage"
 	multierror "github.com/hashicorp/go-multierror"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -15,8 +14,8 @@ import (
 // List lists all versions of a module.
 func (s *ModuleStore) List(ctx context.Context, moduleName string) ([]string, error) {
 	const op errors.Op = "mongo.List"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	c := s.client.Database(s.db).Collection(s.coll)
 	projection := bson.M{"version": 1, "_id": 0}
 	query := bson.M{"module": moduleName}

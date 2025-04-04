@@ -3,8 +3,8 @@ package middleware
 import (
 	"net/http"
 
-	"github.com/gomods/athens/internal/log"
-	"github.com/gomods/athens/internal/requestid"
+	"github.com/dyammarcano/athens/internal/log"
+	"github.com/dyammarcano/athens/internal/requestid"
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
 )

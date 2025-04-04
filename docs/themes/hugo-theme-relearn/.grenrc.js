@@ -43,6 +43,10 @@ module.exports = {
   onlyMilestones: true,
   template: {
     group: "\n### {{heading}}\n",
-    release: ({ body, date, release }) => `## ${release} (` + date.replace( /(\d+)\/(\d+)\/(\d+)/, '$3-$2-$1' ) + `)\n${body}`,
+    release: ({
+                body,
+                date,
+                release
+              }) => `## ${release} (` + date.replace(/(\d+)\/(\d+)\/(\d+)/, '$3-$2-$1') + `)\n${body}`,
   },
 };

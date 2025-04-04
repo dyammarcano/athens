@@ -8,10 +8,9 @@ import (
 	"os/exec"
 	"time"
 
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/storage"
 	"github.com/spf13/afero"
 	"golang.org/x/sync/singleflight"
 )
@@ -49,8 +48,8 @@ type listSFResp struct {
 
 func (l *vcsLister) List(ctx context.Context, module string) (*storage.RevInfo, []string, error) {
 	const op errors.Op = "vcsLister.List"
-	_, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//_, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	sfResp, err, _ := l.sfg.Do(module, func() (any, error) {
 		tmpDir, err := afero.TempDir(l.fs, "", "go-list")
 		if err != nil {

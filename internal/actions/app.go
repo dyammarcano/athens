@@ -4,11 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/log"
-	mw "github.com/gomods/athens/internal/middleware"
-	"github.com/gomods/athens/internal/module"
-	"github.com/gomods/athens/internal/observ"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/log"
+	mw "github.com/dyammarcano/athens/internal/middleware"
+	"github.com/dyammarcano/athens/internal/module"
 	"github.com/gorilla/mux"
 	"github.com/unrolled/secure"
 	"go.opencensus.io/plugin/ochttp"
@@ -70,27 +69,27 @@ func App(logger *log.Logger, conf *config.Config) (http.Handler, error) {
 	// RegisterExporter returns the function that all traces are flushed to the exporter
 	// and the exporter needs to be stopped. The function should be called when the exporter
 	// is no longer needed.
-	flushTraces, err := observ.RegisterExporter(
-		conf.TraceExporter,
-		conf.TraceExporterURL,
-		Service,
-		conf.GoEnv,
-	)
-	if err != nil {
-		logger.Info(err)
-	} else {
-		defer flushTraces()
-	}
-
-	// RegisterStatsExporter will register an exporter where we will collect our stats.
-	// The error from the RegisterStatsExporter would be nil if the proper stats exporter
-	// was specified by the user.
-	flushStats, err := observ.RegisterStatsExporter(r, conf.StatsExporter, Service)
-	if err != nil {
-		logger.Info(err)
-	} else {
-		defer flushStats()
-	}
+	//flushTraces, err := observ.RegisterExporter(
+	//	conf.TraceExporter,
+	//	conf.TraceExporterURL,
+	//	Service,
+	//	conf.GoEnv,
+	//)
+	//if err != nil {
+	//	logger.Info(err)
+	//} else {
+	//	defer flushTraces()
+	//}
+	//
+	//// RegisterStatsExporter will register an exporter where we will collect our stats.
+	//// The error from the RegisterStatsExporter would be nil if the proper stats exporter
+	//// was specified by the user.
+	//flushStats, err := observ.RegisterStatsExporter(r, conf.StatsExporter, Service)
+	//if err != nil {
+	//	logger.Info(err)
+	//} else {
+	//	defer flushStats()
+	//}
 
 	user, pass, ok := conf.BasicAuth()
 	if ok {

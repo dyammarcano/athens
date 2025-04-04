@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/log"
-	"github.com/gomods/athens/internal/paths"
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/log"
+	"github.com/dyammarcano/athens/internal/paths"
+	"github.com/dyammarcano/athens/internal/storage"
 )
 
 const defaultPageSize = 1000

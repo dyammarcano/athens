@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/gomods/athens/internal/log"
+	"github.com/dyammarcano/athens/internal/log"
 	"github.com/sirupsen/logrus"
 )
 

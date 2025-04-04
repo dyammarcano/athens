@@ -8,15 +8,15 @@ weight: 10
 
 1. 创建一个.netrc文件，如下所示：
 
-	`machine <ip or fqdn>`
+   `machine <ip or fqdn>`
 
-  	`login <username>`
-	
-  	`password <user password>`
+   `login <username>`
+
+   `password <user password>`
 
 2. 通过环境变量通知Athens该文件的位置：
 
-	`ATHENS_NETRC_PATH=<location/to/.netrc>`
+   `ATHENS_NETRC_PATH=<location/to/.netrc>`
 
 3. Athens将文件复制到home目录，并覆盖home目录中的任何.netrc文件。或者，如果Athens服务器的主机在home目录中已经存在一个.netrc文件，则身份验证可开箱即用。
 
@@ -26,7 +26,7 @@ weight: 10
 
 2. 通过环境变量通知Athens该文件的位置
 
-	`ATHENS_HGRC_PATH=<location/to/.hgrc>`
+   `ATHENS_HGRC_PATH=<location/to/.hgrc>`
 
 3. Athens将会把文件复制到home目录，并覆盖home目录中的任何.hgrc文件。或者，如果Athens服务器的主机在home目录中已经存在一个.hgrc文件，则身份验证可开箱即用。
 

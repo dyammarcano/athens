@@ -3,7 +3,7 @@ package middleware
 import (
 	"net/http"
 
-	"github.com/gomods/athens/internal/requestid"
+	"github.com/dyammarcano/athens/internal/requestid"
 	"github.com/google/uuid"
 )
 

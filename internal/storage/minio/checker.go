@@ -4,14 +4,13 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
+	"github.com/dyammarcano/athens/internal/errors"
 )
 
 func (s *storageImpl) Exists(ctx context.Context, module, version string) (bool, error) {
 	const op errors.Op = "minio.Exists"
-	_, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//_, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	versionedPath := s.versionLocation(module, version)
 	modPath := fmt.Sprintf("%s/go.mod", versionedPath)
 	infoPath := fmt.Sprintf("%s/%s.info", versionedPath, version)

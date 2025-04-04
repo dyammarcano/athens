@@ -8,7 +8,9 @@ title = "page 1-1-2 (headless)"
 
 This is a headless child page.
 
-While the heading is displayed in the theme for hierarchical views like the menu, the `children` shortcode, the chapter print feature and the breadcrumbs, its content will never be displayed and will not be accessible by search. Also its terms will not appear on the taxonomy pages.
+While the heading is displayed in the theme for hierarchical views like the menu, the `children` shortcode, the chapter
+print feature and the breadcrumbs, its content will never be displayed and will not be accessible by search. Also its
+terms will not appear on the taxonomy pages.
 
 ## Subpages of this page
 

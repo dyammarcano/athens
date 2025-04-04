@@ -3,7 +3,7 @@ package module
 import (
 	"context"
 
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/storage"
 )
 
 // UpstreamLister retrieves a list of available module versions from upstream

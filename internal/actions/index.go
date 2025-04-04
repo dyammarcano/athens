@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/index"
-	"github.com/gomods/athens/internal/log"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/index"
+	"github.com/dyammarcano/athens/internal/log"
 	"github.com/sirupsen/logrus"
 )
 

@@ -3,7 +3,7 @@ package fs
 import (
 	"testing"
 
-	"github.com/gomods/athens/internal/storage/compliance"
+	"github.com/dyammarcano/athens/internal/storage/compliance"
 	"github.com/spf13/afero"
 	"github.com/stretchr/testify/require"
 )

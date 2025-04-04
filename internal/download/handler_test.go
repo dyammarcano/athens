@@ -6,10 +6,10 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/gomods/athens/internal/download/mode"
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/log"
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/download/mode"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/log"
+	"github.com/dyammarcano/athens/internal/storage"
 	"github.com/gorilla/mux"
 )
 
@@ -25,9 +25,9 @@ func TestRedirect(t *testing.T) {
 			},
 		})
 		for _, path := range [...]string{
-			"/github.com/gomods/athens/@v/v0.4.0.info",
-			"/github.com/gomods/athens/@v/v0.4.0.mod",
-			"/github.com/gomods/athens/@v/v0.4.0.zip",
+			"/github.com/dyammarcano/athens/@v/v0.4.0.info",
+			"/github.com/dyammarcano/athens/@v/v0.4.0.mod",
+			"/github.com/dyammarcano/athens/@v/v0.4.0.zip",
 		} {
 			req := httptest.NewRequest("GET", path, nil)
 			w := httptest.NewRecorder()

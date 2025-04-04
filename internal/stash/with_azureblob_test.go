@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/storage"
-	"github.com/gomods/athens/internal/storage/mem"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/storage/mem"
 	"github.com/technosophos/moniker"
 	"golang.org/x/sync/errgroup"
 )

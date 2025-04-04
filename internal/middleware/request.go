@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/dyammarcano/athens/internal/log"
 	"github.com/fatih/color"
-	"github.com/gomods/athens/internal/log"
 	logrus "github.com/sirupsen/logrus"
 )
 

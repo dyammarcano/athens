@@ -5,14 +5,13 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
+	"github.com/dyammarcano/athens/internal/errors"
 )
 
 func (s *storageImpl) List(ctx context.Context, module string) ([]string, error) {
 	const op errors.Op = "minio.List"
-	_, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//_, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 	doneCh := make(chan struct{})
 	defer close(doneCh)
 	searchPrefix := module + "/"

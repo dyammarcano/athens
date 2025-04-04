@@ -10,9 +10,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/storage"
 	"github.com/spf13/afero"
 	"golang.org/x/sync/singleflight"
 )
@@ -56,8 +55,8 @@ func NewGoGetFetcher(goBinaryName, gogetDir string, envVars []string, fs afero.F
 // .info, .mod, and .zip files.
 func (g *goGetFetcher) Fetch(ctx context.Context, mod, ver string) (*storage.Version, error) {
 	const op errors.Op = "goGetFetcher.Fetch"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 
 	resp, err, _ := g.sfg.Do(mod+"###"+ver, func() (any, error) {
 		// setup the GOPATH

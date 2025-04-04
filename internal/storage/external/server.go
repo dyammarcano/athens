@@ -7,10 +7,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/gomods/athens/internal/download"
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/paths"
-	"github.com/gomods/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/download"
+	"github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/paths"
+	"github.com/dyammarcano/athens/internal/storage"
 	"github.com/gorilla/mux"
 	"golang.org/x/mod/zip"
 )

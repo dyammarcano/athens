@@ -3,11 +3,13 @@ title = "Pages organization"
 weight = 1
 +++
 
-In **Hugo**, pages are the core of your site. Once it is configured, pages are definitely the added value to your documentation site.
+In **Hugo**, pages are the core of your site. Once it is configured, pages are definitely the added value to your
+documentation site.
 
 ## Folders
 
-Organize your site like [any other Hugo project](https://gohugo.io/content/organization/). Typically, you will have a _content_ folder with all your pages.
+Organize your site like [any other Hugo project](https://gohugo.io/content/organization/). Typically, you will have a
+_content_ folder with all your pages.
 
 ````plaintext
 content
@@ -41,7 +43,8 @@ content
 
 ## Create your project
 
-The following steps are here to help you initialize your new website. If you don't know Hugo at all, we strongly suggest you to train by following [great documentation for beginners](https://gohugo.io/overview/quickstart/).
+The following steps are here to help you initialize your new website. If you don't know Hugo at all, we strongly suggest
+you to train by following [great documentation for beginners](https://gohugo.io/overview/quickstart/).
 
 Hugo provides a `new` command to create a new website.
 

@@ -4,9 +4,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/observ"
+	"github.com/dyammarcano/athens/internal/config"
 )
 
 // WithSingleflight returns a singleflight stasher.
@@ -46,9 +44,9 @@ func (s *withsf) process(ctx context.Context, mod, ver string) {
 }
 
 func (s *withsf) Stash(ctx context.Context, mod, ver string) (string, error) {
-	const op errors.Op = "singleflight.Stash"
-	ctx, span := observ.StartSpan(ctx, op.String())
-	defer span.End()
+	//const op errors.Op = "singleflight.Stash"
+	//ctx, span := observ.StartSpan(ctx, op.String())
+	//defer span.End()
 
 	mv := config.FmtModVer(mod, ver)
 	s.mu.Lock()

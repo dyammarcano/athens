@@ -7,9 +7,9 @@ import (
 	"io"
 	"testing"
 
-	athenserr "github.com/gomods/athens/internal/errors"
-	"github.com/gomods/athens/internal/storage"
-	"github.com/gomods/athens/internal/storage/mem"
+	athenserr "github.com/dyammarcano/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/storage"
+	"github.com/dyammarcano/athens/internal/storage/mem"
 	"github.com/stretchr/testify/require"
 )
 

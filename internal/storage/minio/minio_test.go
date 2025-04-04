@@ -4,8 +4,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/storage/compliance"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/storage/compliance"
 )
 
 func TestBackend(t *testing.T) {

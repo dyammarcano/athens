@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gomods/athens/internal/index"
+	"github.com/dyammarcano/athens/internal/index"
 )
 
 var indexHandlerTests = []struct {

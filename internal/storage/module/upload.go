@@ -6,8 +6,8 @@ import (
 	"io"
 	"time"
 
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/errors"
 	multierror "github.com/hashicorp/go-multierror"
 )
 

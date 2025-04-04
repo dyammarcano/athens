@@ -5,9 +5,9 @@ import (
 	"net/url"
 	"path"
 
-	"github.com/gomods/athens/internal/download/mode"
-	"github.com/gomods/athens/internal/log"
-	"github.com/gomods/athens/internal/middleware"
+	"github.com/dyammarcano/athens/internal/download/mode"
+	"github.com/dyammarcano/athens/internal/log"
+	"github.com/dyammarcano/athens/internal/middleware"
 	"github.com/gorilla/mux"
 )
 

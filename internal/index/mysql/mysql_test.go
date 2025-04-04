@@ -4,8 +4,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/gomods/athens/internal/config"
-	"github.com/gomods/athens/internal/index/compliance"
+	"github.com/dyammarcano/athens/internal/config"
+	"github.com/dyammarcano/athens/internal/index/compliance"
 )
 
 func TestMySQL(t *testing.T) {

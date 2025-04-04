@@ -11,11 +11,11 @@ disableHugoGeneratorInject = true
 # Audit your published site for problems
 # https://discourse.gohugo.io/t/audit-your-published-site-for-problems/35184/12
 [minify]
-  [minify.tdewolff]
-    [minify.tdewolff.html]
-      keepComments = true
+[minify.tdewolff]
+[minify.tdewolff.html]
+keepComments = true
 
 [params]
-  disableGeneratorVersion = true
-  disableAssetsBusting = true
-  disableRandomIds = true
+disableGeneratorVersion = true
+disableAssetsBusting = true
+disableRandomIds = true

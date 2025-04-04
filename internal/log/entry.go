@@ -1,7 +1,7 @@
 package log
 
 import (
-	"github.com/gomods/athens/internal/errors"
+	"github.com/dyammarcano/athens/internal/errors"
 	"github.com/sirupsen/logrus"
 )
 
