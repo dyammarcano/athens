@@ -44,22 +44,18 @@ func RegisterHandlers(r *mux.Router, opts *HandlerOpts) {
 	}
 	noCacheMw := middleware.CacheControl("no-cache, no-store, must-revalidate")
 
-	listHandler := LogEntryHandler(ListHandler, opts)
-	r.Handle(PathList, noCacheMw(listHandler))
-
-	latestHandler := LogEntryHandler(LatestHandler, opts)
-	r.Handle(PathLatest, noCacheMw(latestHandler)).Methods(http.MethodGet)
-
+	r.Handle(PathList, noCacheMw(LogEntryHandler(ListHandler, opts)))
+	r.Handle(PathLatest, noCacheMw(LogEntryHandler(LatestHandler, opts))).Methods(http.MethodGet)
 	r.Handle(PathVersionInfo, LogEntryHandler(InfoHandler, opts)).Methods(http.MethodGet)
 	r.Handle(PathVersionModule, LogEntryHandler(ModuleHandler, opts)).Methods(http.MethodGet)
 	r.Handle(PathVersionZip, LogEntryHandler(ZipHandler, opts)).Methods(http.MethodGet, http.MethodHead)
 }
 
 func getRedirectURL(base, downloadPath string) (string, error) {
-	url, err := url.Parse(base)
+	parse, err := url.Parse(base)
 	if err != nil {
 		return "", err
 	}
-	url.Path = path.Join(url.Path, downloadPath)
-	return url.String(), nil
+	parse.Path = path.Join(parse.Path, downloadPath)
+	return parse.String(), nil
 }
