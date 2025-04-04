@@ -5,6 +5,7 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"github.com/gomods/athens/internal/actions"
 	stdlog "log"
 	"net"
 	"net/http"
@@ -13,11 +14,10 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/gomods/athens/cmd/proxy/actions"
+	"github.com/gomods/athens/internal/build"
+	"github.com/gomods/athens/internal/config"
+	athenslog "github.com/gomods/athens/internal/log"
 	"github.com/gomods/athens/internal/shutdown"
-	"github.com/gomods/athens/pkg/build"
-	"github.com/gomods/athens/pkg/config"
-	athenslog "github.com/gomods/athens/pkg/log"
 	"github.com/sirupsen/logrus"
 )
 

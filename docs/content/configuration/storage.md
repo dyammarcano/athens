@@ -374,8 +374,8 @@ Athens provides a convenience wrapper that lets you implement a storage backend 
 package main
 
 import (
-    "github.com/gomods/athens/pkg/storage"
-    "github.com/gomods/athens/pkg/storage/external"
+    "github.com/gomods/athens/internal/storage"
+    "github.com/gomods/athens/internal/storage/external"
 )
 
 // TODO: implement storage.Backend
