@@ -1,31 +1,34 @@
 {{- /* based on Hugo 0.125.0 _internal/twitter_cardss.html but with modified title */}}
 {{- $images := partial "_funcs/get-page-images" . }}
 {{- with index $images 0 }}
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{{ .Permalink }}">
+<meta content="summary_large_image" name="twitter:card">
+<meta content="{{ .Permalink }}" name="twitter:image">
 {{- else }}
-    <meta name="twitter:card" content="summary">
+<meta content="summary" name="twitter:card">
 {{- end }}
-    <meta name="twitter:title" content="{{ partial "pageHelper/title.hugo" (dict "page" . "fullyQualified" true "reverse" true) }}">
-    <meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+<meta content="{{ partial " name="twitter:title"
+      pageHelper/title.hugo" (dict "page" . "fullyQualified" true "reverse" true) }}">
+<meta
+  content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}"
+  name="twitter:description">
 
 {{- $twitterSite := "" }}
 {{- with site.Params.social.twitter }}
-  {{- $twitterSite = . }}
+{{- $twitterSite = . }}
 {{- else }}
-  {{- with site.Social.twitter }}
-    {{- $twitterSite = . }}
-    {{- $hugoVersion := "0.120.0" }}
-    {{- if ge hugo.Version $hugoVersion }}
-      {{- warnf "The social key in site configuration is deprecated. Use params.social.twitter instead." }}
-    {{- end }}
-  {{- end }}
+{{- with site.Social.twitter }}
+{{- $twitterSite = . }}
+{{- $hugoVersion := "0.120.0" }}
+{{- if ge hugo.Version $hugoVersion }}
+{{- warnf "The social key in site configuration is deprecated. Use params.social.twitter instead." }}
+{{- end }}
+{{- end }}
 {{- end }}
 
 {{- with $twitterSite }}
-  {{- $content := . }}
-  {{- if not (strings.HasPrefix . "@") }}
-    {{- $content = printf "@%v" . }}
-  {{- end }}
-    <meta name="twitter:site" content="{{ $content }}">
+{{- $content := . }}
+{{- if not (strings.HasPrefix . "@") }}
+{{- $content = printf "@%v" . }}
+{{- end }}
+<meta content="{{ $content }}" name="twitter:site">
 {{- end }}

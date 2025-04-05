@@ -5,6 +5,7 @@ title = "Resources"
   name = 'MaybeTreasure.txt'
   src = 'MaybeTreasure.pir.txt'
 +++
+
 {{% resources /%}}
 
 {{< piratify >}}

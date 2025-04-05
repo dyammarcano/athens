@@ -524,7 +524,7 @@
     }
     if (useShadowDOM) {
       var host = createElement('span');
-      render$1(host.attachShadow({ mode: 'closed' }), options, function () {
+      render$1(host.attachShadow({mode: 'closed'}), options, function () {
         func(host);
       });
     } else {
@@ -563,20 +563,21 @@
   };
 
   if (location.protocol + '//' + location.host + location.pathname === iframeURL) {
-    render$1(document.body, parse(window.name || location.hash.replace(/^#/, '')), function () {});
+    render$1(document.body, parse(window.name || location.hash.replace(/^#/, '')), function () {
+    });
   } else {
     defer(function () {
       var anchors = document.querySelectorAll
         ? document.querySelectorAll('a.' + buttonClass)
         : (function () {
-            var results = [];
-            forEach(document.getElementsByTagName('a'), function (a) {
-              if ((' ' + a.className + ' ').replace(/[ \t\n\f\r]+/g, ' ').indexOf(' ' + buttonClass + ' ') !== -1) {
-                results.push(a);
-              }
-            });
-            return results
-          })();
+          var results = [];
+          forEach(document.getElementsByTagName('a'), function (a) {
+            if ((' ' + a.className + ' ').replace(/[ \t\n\f\r]+/g, ' ').indexOf(' ' + buttonClass + ' ') !== -1) {
+              results.push(a);
+            }
+          });
+          return results
+        })();
       forEach(anchors, function (anchor) {
         render(anchor, function (el) {
           anchor.parentNode.replaceChild(el, anchor);
@@ -585,5 +586,5 @@
     });
   }
 
-  window.githubButtons = { render: render };
+  window.githubButtons = {render: render};
 })();

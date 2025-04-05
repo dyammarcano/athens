@@ -10,7 +10,7 @@
 # This is used for generating social media meta information for the opengraph
 # protocol and twitter cards.
 # If not set, the set value of your site's hugo.toml is used.
-images = [ "images/hero.png" ]
+images = ["images/hero.png"]
 
 # The title of your page.
 # Default: not set

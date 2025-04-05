@@ -29,189 +29,189 @@ defaultContentLanguage = "en"
 title = "Hugo Relearn Theme"
 
 [outputs]
-  # add `json` to the home to support Lunr search; This is a mandatory setting
-  # for the search functionality
-  # add `print` to home, section and page to activate the feature to print whole
-  # chapters
-  home = ["html", "rss", "print", "search", "searchpage"]
-  section = ["html", "rss", "print"]
-  page = ["html", "rss", "print"]
+# add `json` to the home to support Lunr search; This is a mandatory setting
+# for the search functionality
+# add `print` to home, section and page to activate the feature to print whole
+# chapters
+home = ["html", "rss", "print", "search", "searchpage"]
+section = ["html", "rss", "print"]
+page = ["html", "rss", "print"]
 
 [markup]
-  [markup.highlight]
-    # line numbers in a table layout will shift if code is wrapping, so better
-    # not use it; visually both layouts have the same look and behavior
-    lineNumbersInTable = false
+[markup.highlight]
+# line numbers in a table layout will shift if code is wrapping, so better
+# not use it; visually both layouts have the same look and behavior
+lineNumbersInTable = false
 
-    # the shipped variants come with their own modified chroma syntax highlighting
-    # stylesheets which are linked in your generated HTML pages; you can use Hugo to generate
-    # own stylesheets to your liking and use them in your variant;
-    # if you want to use Hugo's internal styles instead of the shipped stylesheets:
-    # - remove `noClasses` or set `noClasses = true`
-    # - set `style` to a predefined style name
-    # note: with using the internal styles, the `--CODE-theme` setting in your variant
-    # stylesheet will be ignored and the internal style is used for all variants and
-    # even print
-    noClasses = false
-    # style = "tango"
+# the shipped variants come with their own modified chroma syntax highlighting
+# stylesheets which are linked in your generated HTML pages; you can use Hugo to generate
+# own stylesheets to your liking and use them in your variant;
+# if you want to use Hugo's internal styles instead of the shipped stylesheets:
+# - remove `noClasses` or set `noClasses = true`
+# - set `style` to a predefined style name
+# note: with using the internal styles, the `--CODE-theme` setting in your variant
+# stylesheet will be ignored and the internal style is used for all variants and
+# even print
+noClasses = false
+# style = "tango"
 
-  [markup.goldmark]
-    # this is required for the themes exampleSite to make the piratify shortcode work
-    duplicateResourceFiles = true
+[markup.goldmark]
+# this is required for the themes exampleSite to make the piratify shortcode work
+duplicateResourceFiles = true
 
-    # activated for this showcase to use HTML and JavaScript; decide on your own needs;
-    # if in doubt, remove this line
-    renderer.unsafe = true
+# activated for this showcase to use HTML and JavaScript; decide on your own needs;
+# if in doubt, remove this line
+renderer.unsafe = true
 
-  [markup.goldmark.extensions]
+[markup.goldmark.extensions]
 
-    [markup.goldmark.extensions.passthrough]
-      enable = true
+[markup.goldmark.extensions.passthrough]
+enable = true
 
-      [markup.goldmark.extensions.passthrough.delimiters]
-        # the settings chosen here match the default initialization
-        # of the MathJax library chosen by the theme;
-        # if you want to adjust to different values you also need
-        # to set them in `[params] mathJaxInitialize`
-        inline = [['\(', '\)'], ['$',  '$']]
-        block  = [['\[', '\]'], ['$$', '$$']]
+[markup.goldmark.extensions.passthrough.delimiters]
+# the settings chosen here match the default initialization
+# of the MathJax library chosen by the theme;
+# if you want to adjust to different values you also need
+# to set them in `[params] mathJaxInitialize`
+inline = [['\(', '\)'], ['$', '$']]
+block = [['\[', '\]'], ['$$', '$$']]
 
 # showcase of the menu shortcuts; you can use relative URLs linking
 # to your content or use fully-qualified URLs to link outside of
 # your project
 [languages]
-  [languages.en]
-    title = "Hugo Relearn Theme"
-    weight = 1
-    languageName = "English"
-    # Language dependent settings:
-    # Use case https://gohugo.io/content-management/multilingual/#translation-by-content-directory
-    #contentDir = "content/en"
-    [languages.en.params]
-      landingPageName = "<i class='fa-fw fas fa-home'></i> Home"
+[languages.en]
+title = "Hugo Relearn Theme"
+weight = 1
+languageName = "English"
+# Language dependent settings:
+# Use case https://gohugo.io/content-management/multilingual/#translation-by-content-directory
+#contentDir = "content/en"
+[languages.en.params]
+landingPageName = "<i class='fa-fw fas fa-home'></i> Home"
 
-  [[languages.en.menu.shortcuts]]
-    name = "<i class='fa-fw fab fa-github'></i> GitHub repo"
-    identifier = "ds"
-    url = "https://github.com/McShelby/hugo-theme-relearn"
-    weight = 10
+[[languages.en.menu.shortcuts]]
+name = "<i class='fa-fw fab fa-github'></i> GitHub repo"
+identifier = "ds"
+url = "https://github.com/McShelby/hugo-theme-relearn"
+weight = 10
 
-  [[languages.en.menu.shortcuts]]
-    name = "<i class='fa-fw fas fa-camera'></i> Showcases"
-    pageRef = "showcase/"
-    weight = 20
+[[languages.en.menu.shortcuts]]
+name = "<i class='fa-fw fas fa-camera'></i> Showcases"
+pageRef = "showcase/"
+weight = 20
 
-  [[languages.en.menu.shortcuts]]
-    name = "<i class='fa-fw fas fa-bullhorn'></i> Credits"
-    pageRef = "more/credits/"
-    weight = 30
+[[languages.en.menu.shortcuts]]
+name = "<i class='fa-fw fas fa-bullhorn'></i> Credits"
+pageRef = "more/credits/"
+weight = 30
 
-  [[languages.en.menu.shortcuts]]
-    name = "<i class='fa-fw fas fa-tags'></i> Tags"
-    pageRef = "tags/"
-    weight = 40
+[[languages.en.menu.shortcuts]]
+name = "<i class='fa-fw fas fa-tags'></i> Tags"
+pageRef = "tags/"
+weight = 40
 
-  [[languages.en.menu.shortcuts]]
-    name = "<i class='fa-fw fas fa-layer-group'></i> Categories"
-    pageRef = "categories/"
-    weight = 50
+[[languages.en.menu.shortcuts]]
+name = "<i class='fa-fw fas fa-layer-group'></i> Categories"
+pageRef = "categories/"
+weight = 50
 
-  # this is ourrr way t' showcase th' multilang settings by
-  # doing autotrrranlat'n of th' english content; we are
-  # lazy and don't supporrt furrrther trrranslations; arrr,
-  # don't take it t' serrrious, fello'; it's prrretty hacky and:
-  # NOT MEANT FER PRRRODUCTION! ARRR!
+# this is ourrr way t' showcase th' multilang settings by
+# doing autotrrranlat'n of th' english content; we are
+# lazy and don't supporrt furrrther trrranslations; arrr,
+# don't take it t' serrrious, fello'; it's prrretty hacky and:
+# NOT MEANT FER PRRRODUCTION! ARRR!
 
-  [languages.pir]
-    title = "Cap'n Hugo Relearrrn Theme"
-    weight = 2
-    languageCode = "art-pir"
-    languageDirection = "rtl"
-    languageName = "Arrr! ☠ Pirrrates ☠"
-    # Language dependent settings:
-    # Use case https://gohugo.io/content-management/multilingual/#translation-by-content-directory
-    #contentDir = "content/pir"
-    [languages.pir.params]
-      landingPageName = "<i class='fa-fw fas home'></i> Arrr! Home"
+[languages.pir]
+title = "Cap'n Hugo Relearrrn Theme"
+weight = 2
+languageCode = "art-pir"
+languageDirection = "rtl"
+languageName = "Arrr! ☠ Pirrrates ☠"
+# Language dependent settings:
+# Use case https://gohugo.io/content-management/multilingual/#translation-by-content-directory
+#contentDir = "content/pir"
+[languages.pir.params]
+landingPageName = "<i class='fa-fw fas home'></i> Arrr! Home"
 
-  [[languages.pir.menu.shortcuts]]
-    name = "<i class='fa-fw fab fa-github'></i> GitHub repo"
-    identifier = "ds"
-    url = "https://github.com/McShelby/hugo-theme-relearn"
-    weight = 10
+[[languages.pir.menu.shortcuts]]
+name = "<i class='fa-fw fab fa-github'></i> GitHub repo"
+identifier = "ds"
+url = "https://github.com/McShelby/hugo-theme-relearn"
+weight = 10
 
-  [[languages.pir.menu.shortcuts]]
-    name = "<i class='fa-fw fas fa-camera'></i> Showcases"
-    pageRef = "showcase/"
-    weight = 20
+[[languages.pir.menu.shortcuts]]
+name = "<i class='fa-fw fas fa-camera'></i> Showcases"
+pageRef = "showcase/"
+weight = 20
 
-  [[languages.pir.menu.shortcuts]]
-    name = "<i class='fa-fw fas fa-bullhorn'></i> Crrredits"
-    pageRef = "more/credits/"
-    weight = 30
+[[languages.pir.menu.shortcuts]]
+name = "<i class='fa-fw fas fa-bullhorn'></i> Crrredits"
+pageRef = "more/credits/"
+weight = 30
 
-  [[languages.pir.menu.shortcuts]]
-    name = "<i class='fa-fw fas fa-tags'></i> Arrr! Tags"
-    pageRef = "tags/"
-    weight = 40
+[[languages.pir.menu.shortcuts]]
+name = "<i class='fa-fw fas fa-tags'></i> Arrr! Tags"
+pageRef = "tags/"
+weight = 40
 
-  [[languages.pir.menu.shortcuts]]
-    name = "<i class='fa-fw fas fa-layer-group'></i> Categorrries"
-    pageRef = "categories/"
-    weight = 50
+[[languages.pir.menu.shortcuts]]
+name = "<i class='fa-fw fas fa-layer-group'></i> Categorrries"
+pageRef = "categories/"
+weight = 50
 
 # mounts are only needed in this showcase to access the publicly available screenshots and CHANGELOG;
 # remove this section if you don't need further mounts
 [module]
-  [[module.mounts]]
-    source = 'archetypes'
-    target = 'archetypes'
-  [[module.mounts]]
-    source = 'assets'
-    target = 'assets'
+[[module.mounts]]
+source = 'archetypes'
+target = 'archetypes'
+[[module.mounts]]
+source = 'assets'
+target = 'assets'
 
-  # Language dependent settings:
-  # Use case https://gohugo.io/content-management/multilingual/#translation-by-filename
-  [[module.mounts]]
-    source = 'content'
-    target = 'content'
-  # Use case https://gohugo.io/content-management/multilingual/#translation-by-content-directory
-  #[[module.mounts]]
-  #  lang = 'en'
-  #  source = 'content/en'
-  #  target = 'content'
-  #[[module.mounts]]
-  #  lang = 'pir'
-  #  source = 'content/pir'
-  #  target = 'content'
+# Language dependent settings:
+# Use case https://gohugo.io/content-management/multilingual/#translation-by-filename
+[[module.mounts]]
+source = 'content'
+target = 'content'
+# Use case https://gohugo.io/content-management/multilingual/#translation-by-content-directory
+#[[module.mounts]]
+#  lang = 'en'
+#  source = 'content/en'
+#  target = 'content'
+#[[module.mounts]]
+#  lang = 'pir'
+#  source = 'content/pir'
+#  target = 'content'
 
-  [[module.mounts]]
-    source = 'data'
-    target = 'data'
-  [[module.mounts]]
-    source = 'i18n'
-    target = 'i18n'
-  [[module.mounts]]
-    source = 'layouts'
-    target = 'layouts'
-  [[module.mounts]]
-    source = 'static'
-    target = 'static'
-  # just for this documentation to expose our config in the docs
-  [[module.mounts]]
-    source = 'config'
-    target = 'static/config'
-  # just for this documentation to expose the GitHub hero image in the docs
-  [[module.mounts]]
-    source = '../images'
-    target = 'assets/images'
-  # just for this documentation to expose the CHANGELOG.md in the docs
-  [[module.mounts]]
-    source = '../CHANGELOG.md'
-    target = 'assets/CHANGELOG.md'
+[[module.mounts]]
+source = 'data'
+target = 'data'
+[[module.mounts]]
+source = 'i18n'
+target = 'i18n'
+[[module.mounts]]
+source = 'layouts'
+target = 'layouts'
+[[module.mounts]]
+source = 'static'
+target = 'static'
+# just for this documentation to expose our config in the docs
+[[module.mounts]]
+source = 'config'
+target = 'static/config'
+# just for this documentation to expose the GitHub hero image in the docs
+[[module.mounts]]
+source = '../images'
+target = 'assets/images'
+# just for this documentation to expose the CHANGELOG.md in the docs
+[[module.mounts]]
+source = '../CHANGELOG.md'
+target = 'assets/CHANGELOG.md'
 
 [params]
-  # Demo setting for displaying the siteparam shortcode the docs.
-  siteparam.test.text = "A **nested** option <b>with</b> formatting"
-  # Extension to the image effects only for the docs.
-  imageEffects.bg-white = true
+# Demo setting for displaying the siteparam shortcode the docs.
+siteparam.test.text = "A **nested** option <b>with</b> formatting"
+# Extension to the image effects only for the docs.
+imageEffects.bg-white = true

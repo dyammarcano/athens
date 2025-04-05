@@ -12,7 +12,8 @@ Sometimes screenshots need to be redone. This page explains how to create the di
 - Use English translation
 - Empty search
 - Remove history checkmarks but leave it on the page thats used for the screenshot
-- After resize of the page into the required resolution, reload the page to have all scrollbars in default loading position
+- After resize of the page into the required resolution, reload the page to have all scrollbars in default loading
+  position
 
 ## Demo Screenshot
 
@@ -49,7 +50,8 @@ The location is mandatory due to Hugo's theme site builder.
 
 **Content**:
 
-Show the [Demo Screenshot](#demo-screenshot) page on different devices and different themes. Composition of the different device screenshots into a template.
+Show the [Demo Screenshot](#demo-screenshot) page on different devices and different themes. Composition of the
+different device screenshots into a template.
 
 The content should be:
 
@@ -72,7 +74,8 @@ The content should be:
 - Tablet: light theme _778 x 1038 @ 1_
 - Phone: dark theme _450 x 801 @ .666_
 - From original template size resize to _2700 x 1800_ centered, scale to _900 x 600_ and save as `images/tn.png`
-- From original template size resize to _3000 x 1500_ offset y: _-330_, scale to _1280 x 640_ and save as `images/hero.png`
+- From original template size resize to _3000 x 1500_ offset y: _-330_, scale to _1280 x 640_ and save as
+  `images/hero.png`
 
 **Remarks**:
 

@@ -14,14 +14,16 @@ That's some text with a footnote[^1]
 That's some more text with a footnote.[^someid]
 
 [^someid]:
-    Anything of interest goes here.
+Anything of interest goes here.
 
     Blue light glows blue.
+
 {{% /expand %}}
 
 ## Usage
 
-While the examples are using shortcodes with named parameter you are free to use positional as well or also call this shortcode from your own partials.
+While the examples are using shortcodes with named parameter you are free to use positional as well or also call this
+shortcode from your own partials.
 
 {{< tabs groupid="shortcode-parameter">}}
 {{% tab title="shortcode" %}}
@@ -53,11 +55,11 @@ While the examples are using shortcodes with named parameter you are free to use
 
 ### Parameter
 
-| Name                  | Position | Default          | Notes       |
-|-----------------------|----------|------------------|-------------|
-| **title**             | 1        | `"Expand me..."` | Arbitrary text to appear next to the expand/collapse icon. |
+| Name                  | Position | Default          | Notes                                                             |
+|-----------------------|----------|------------------|-------------------------------------------------------------------|
+| **title**             | 1        | `"Expand me..."` | Arbitrary text to appear next to the expand/collapse icon.        |
 | **open**              | 2        | `false`          | When `true` the content text will be initially shown as expanded. |
-| _**&lt;content&gt;**_ |          | _&lt;empty&gt;_  | Arbitrary text to be displayed on expand. |
+| _**&lt;content&gt;**_ |          | _&lt;empty&gt;_  | Arbitrary text to be displayed on expand.                         |
 
 ## Examples
 
@@ -111,4 +113,4 @@ You can add standard markdown syntax:
 ```
 
 > the possibilities are endless (almost - including other shortcodes may or may not work)
-{{% /expand %}}
+> {{% /expand %}}

@@ -8,7 +8,6 @@ weight: 2
 
 # Welcome, New Contributors!
 
-
 This section is all about helping you get started with open source and Athens.
 
 Let's get started with [learning how to use `git`](./git)

@@ -8,7 +8,8 @@ title = "Showcase"
 
 ## Poésieland by Barbara Post
 
-A collection of poems with requirements for improved taxonomy support, adjusted menu width and additional JavaScript dependencies.
+A collection of poems with requirements for improved taxonomy support, adjusted menu width and additional JavaScript
+dependencies.
 
 [![Poésieland image](poesieland.png?width=60pc&lightbox=false)](http://poesieland.free.fr/)
 

@@ -1,33 +1,33 @@
 {{- $page := .page }}
 {{- if and (not $page) .context }}
-  {{- $page = .context }}
-  {{- warnf "%q: DEPRECATED parameter 'context' for shortcode 'mermaid' found, use 'page' instead; see https://mcshelby.github.io/hugo-theme-relearn/basics/migration#5180" $page.File.Filename }}
+{{- $page = .context }}
+{{- warnf "%q: DEPRECATED parameter 'context' for shortcode 'mermaid' found, use 'page' instead; see https://mcshelby.github.io/hugo-theme-relearn/basics/migration#5180" $page.File.Filename }}
 {{- end }}
 {{- $content := .content }}
 {{- $align := .align | default "center" }}
 {{- $zoom := $page.Site.Params.mermaidZoom | default false }}
 {{- with $page.Params.mermaidZoom }}
-  {{- $zoom = . }}
-  {{- if eq (printf "%T" .) "string" }}
-    {{- $zoom = (eq . "true") }}
-  {{- end }}
+{{- $zoom = . }}
+{{- if eq (printf "%T" .) "string" }}
+{{- $zoom = (eq . "true") }}
+{{- end }}
 {{- end }}
 {{- with .zoom }}
-  {{- $zoom = . }}
-  {{- if eq (printf "%T" .) "string" }}
-    {{- $zoom = (eq . "true") }}
-  {{- end }}
+{{- $zoom = . }}
+{{- if eq (printf "%T" .) "string" }}
+{{- $zoom = (eq . "true") }}
+{{- end }}
 {{- end }}
 
 {{- /* separate shortcode attributes from rest */}}
 {{- $attributes := .attributes | default dict }}
 {{- $otherAttributes := dict }}
 {{- range $k, $v := $attributes }}
-  {{- if eq $k "align" }}
-  {{- else if eq $k "zoom" }}
-  {{- else }}
-    {{- $otherAttributes = (dict $k $v) | merge $otherAttributes }}
-  {{- end }}
+{{- if eq $k "align" }}
+{{- else if eq $k "zoom" }}
+{{- else }}
+{{- $otherAttributes = (dict $k $v) | merge $otherAttributes }}
+{{- end }}
 {{- end }}
 {{- $attributes = $otherAttributes }}
 
@@ -38,10 +38,10 @@
 
 {{- with $page }}
 <pre
-  {{- range $k, $v := $attributes }}
-    {{- if $v }}
-      {{- printf " %s=%q" $k $v | safeHTMLAttr }}
-    {{- end }}
-  {{- end }}>{{ replaceRE "&#39;" "'" ( replaceRE "&#34;" "\"" ( $content | safeHTML ) ) }}</pre>
+  $k, $v $v :=$attributes if printf
+  range {{- {{- {{-
+  }} }} " %s=%q" $k $v | safeHTMLAttr }}
+{{- end }}
+{{- end }}>{{ replaceRE "&#39;" "'" ( replaceRE "&#34;" "\"" ( $content | safeHTML ) ) }}</pre>
 {{- .Store.Set "hasMermaid" true }}
 {{- end }}

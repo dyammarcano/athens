@@ -6,10 +6,12 @@ You can add standard markdown syntax:
 - [links](https://example.com)
 - etc.[^etc]
 
-[^etc]: Et Cetera (English: /ɛtˈsɛtərə/), abbreviated to etc., etc, et cet., is a Latin expression that is used in English to mean "and other similar things", or "and so forth"
+[^etc]: Et Cetera (English: /ɛtˈsɛtərə/), abbreviated to etc., etc, et cet., is a Latin expression that is used in
+English to mean "and other similar things", or "and so forth"
 
 ```plaintext
 ...and even source code
 ```
 
-> the possibilities are endless (almost - including other shortcodes may or may not work) (almost - including other shortcodes may or may not work)
+> the possibilities are endless (almost - including other shortcodes may or may not work) (almost - including other
+> shortcodes may or may not work)

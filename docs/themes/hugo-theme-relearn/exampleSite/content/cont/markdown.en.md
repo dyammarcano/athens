@@ -4,7 +4,8 @@ title = "Markdown Syntax"
 weight = 4
 +++
 
-Let's face it: Writing content for the web is tiresome. WYSIWYG editors help alleviate this task, but they generally result in horrible code, or worse yet, ugly web pages.
+Let's face it: Writing content for the web is tiresome. WYSIWYG editors help alleviate this task, but they generally
+result in horrible code, or worse yet, ugly web pages.
 
 **Markdown** is a better way to write **HTML**, without all the complexities and ugliness that usually accompanies it.
 
@@ -19,7 +20,10 @@ Some of the key benefits are:
 
 John Gruber, the author of Markdown, puts it like this:
 
-> The overriding design goal for Markdown’s formatting syntax is to make it as readable as possible. The idea is that a Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions. While Markdown’s syntax has been influenced by several existing text-to-HTML filters, the single biggest source of inspiration for Markdown’s syntax is the format of plain text email.
+> The overriding design goal for Markdown’s formatting syntax is to make it as readable as possible. The idea is that a
+> Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with
+> tags or formatting instructions. While Markdown’s syntax has been influenced by several existing text-to-HTML filters,
+> the single biggest source of inspiration for Markdown’s syntax is the format of plain text email.
 > <cite>John Gruber</cite>
 
 {{% notice tip %}}
@@ -28,23 +32,31 @@ John Gruber, the author of Markdown, puts it like this:
 
 ## Standard and Extensions
 
-If not otherwise noted, the showed examples adhere to the [Commonmark](https://commonmark.org/help/) standard. In addition the theme supports the following extensions:
+If not otherwise noted, the showed examples adhere to the [Commonmark](https://commonmark.org/help/) standard. In
+addition the theme supports the following extensions:
 
-- {{% badge color="darkgray" icon="fa-fw fab fa-github" %}}GFM{{% /badge %}} Extension on top of standard Markdown adhering to [GitHub Flavored Markdown](https://github.github.com/gfm/).
+- {{% badge color="darkgray" icon="fa-fw fab fa-github" %}}GFM{{% /badge %}} Extension on top of standard Markdown
+  adhering to [GitHub Flavored Markdown](https://github.github.com/gfm/).
 
-- {{% badge color="#888cc4" icon="fa-fw fab fa-markdown" %}}PHP{{% /badge %}} Extension on top of standard Markdown adhering to [PHP Markdown](https://michelf.ca/projects/php-markdown/extra/).
+- {{% badge color="#888cc4" icon="fa-fw fab fa-markdown" %}}PHP{{% /badge %}} Extension on top of standard Markdown
+  adhering to [PHP Markdown](https://michelf.ca/projects/php-markdown/extra/).
 
-- {{% badge color="darkorange" icon="lightbulb" %}}Pants{{% /badge %}} Extension by John Gruber adhering to [SmartyPants](https://daringfireball.net/projects/smartypants/).
+- {{% badge color="darkorange" icon="lightbulb" %}}Pants{{% /badge %}} Extension by John Gruber adhering
+  to [SmartyPants](https://daringfireball.net/projects/smartypants/).
 
 - {{% badge color="#7dc903" icon="fa-fw fas fa-puzzle-piece" %}}Relearn{{% /badge %}} Extension specific to this theme.
 
-- {{% badge color="orangered" icon="fa-fw fas fa-code" %}}HTML{{% /badge %}} If the [usage of HTML](https://gohugo.io/getting-started/configuration-markup/#rendererunsafe) is allowed in your `hugo.toml` the theme supports styling for further elements not accessible using Markdown alone.
+- {{% badge color="orangered" icon="fa-fw fas fa-code" %}}HTML{{% /badge %}} If
+  the [usage of HTML](https://gohugo.io/getting-started/configuration-markup/#rendererunsafe) is allowed in your
+  `hugo.toml` the theme supports styling for further elements not accessible using Markdown alone.
 
 ## Paragraphs
 
-In Markdown your content usually spans the whole available document width. This is called a block. Blocks are always separated by whitespace to their adjacent blocks in the resulting document.
+In Markdown your content usually spans the whole available document width. This is called a block. Blocks are always
+separated by whitespace to their adjacent blocks in the resulting document.
 
-Any text not starting with a special sign is written as normal, plain text paragraph block and must be separated to its adjacent blocks by empty lines.
+Any text not starting with a special sign is written as normal, plain text paragraph block and must be separated to its
+adjacent blocks by empty lines.
 
 ````md
 Lorem ipsum dolor sit amet, graecis denique ei vel, at duo primis mandamus.
@@ -55,14 +67,17 @@ Et legere ocurreret pri, animal tacimates complectitur ad cum. Cu eum inermis in
 {{% notice style="secondary" icon="eye" title="Result" %}}
 Lorem ipsum dolor sit amet, graecis denique ei vel, at duo primis mandamus.
 
-Et legere ocurreret pri, animal tacimates complectitur ad cum. Cu eum inermis inimicus efficiendi. Labore officiis his ex, soluta officiis concludaturque ei qui, vide sensibus vim ad.
+Et legere ocurreret pri, animal tacimates complectitur ad cum. Cu eum inermis inimicus efficiendi. Labore officiis his
+ex, soluta officiis concludaturque ei qui, vide sensibus vim ad.
 {{% /notice %}}
 
 ## Headings
 
-A good idea is to structure your content using headings and subheadings. HTML-headings from `h1` through `h6` are constructed with a `#` for each level.
+A good idea is to structure your content using headings and subheadings. HTML-headings from `h1` through `h6` are
+constructed with a `#` for each level.
 
-In Hugo you usually don't use `h1` as this is generated by your theme and you should only have one such element in a document.
+In Hugo you usually don't use `h1` as this is generated by your theme and you should only have one such element in a
+document.
 
 ````md
 # h1 Heading
@@ -91,11 +106,13 @@ In Hugo you usually don't use `h1` as this is generated by your theme and you sh
 ##### h5 Heading
 
 ###### h6 Heading
+
 {{% /notice %}}
 
 ## Horizontal Rules
 
-To further structure your content you can add horizontal rules. They create a "thematic break" between paragraph blocks. In Markdown, you can create it with three consecutive dashes `---`.
+To further structure your content you can add horizontal rules. They create a "thematic break" between paragraph blocks.
+In Markdown, you can create it with three consecutive dashes `---`.
 
 ````md
 Lorem ipsum dolor sit amet, graecis denique ei vel, at duo primis mandamus.
@@ -110,7 +127,8 @@ Lorem ipsum dolor sit amet, graecis denique ei vel, at duo primis mandamus.
 
 ---
 
-Et legere ocurreret pri, animal tacimates complectitur ad cum. Cu eum inermis inimicus efficiendi. Labore officiis his ex, soluta officiis concludaturque ei qui, vide sensibus vim ad.
+Et legere ocurreret pri, animal tacimates complectitur ad cum. Cu eum inermis inimicus efficiendi. Labore officiis his
+ex, soluta officiis concludaturque ei qui, vide sensibus vim ad.
 {{% /notice %}}
 
 ## Text Markers
@@ -141,7 +159,8 @@ I am rendered with _italicized text_
 
 ### Strikethrough
 
-{{% badge color="darkgray" icon="fa-fw fab fa-github" %}}GFM{{% /badge %}} You can do strikethroughs by enclosing text with two tildes `~~`.
+{{% badge color="darkgray" icon="fa-fw fab fa-github" %}}GFM{{% /badge %}} You can do strikethroughs by enclosing text
+with two tildes `~~`.
 
 ````md
 ~~Strike through this text~~
@@ -153,7 +172,8 @@ I am rendered with _italicized text_
 
 ### Marked Text
 
-{{% badge color="orangered" icon="fa-fw fas fa-code" %}}HTML{{% /badge %}} You can mark text in the predefined accent color of your stylesheet.
+{{% badge color="orangered" icon="fa-fw fas fa-code" %}}HTML{{% /badge %}} You can mark text in the predefined accent
+color of your stylesheet.
 
 ````html
 <mark>Parts</mark> of this text <mark>are marked!</mark>
@@ -163,12 +183,12 @@ I am rendered with _italicized text_
 <mark>Parts</mark> of this text <mark>are marked!</mark>
 {{% /notice %}}
 
-
 ## Special Typesetting
 
 ### Text Substitution
 
-{{% badge color="darkorange" icon="lightbulb" %}}Pants{{% /badge %}} You can combine multiple punctuation characters to single typographic entities. This will only be applied to text outside of code blocks or inline code.
+{{% badge color="darkorange" icon="lightbulb" %}}Pants{{% /badge %}} You can combine multiple punctuation characters to
+single typographic entities. This will only be applied to text outside of code blocks or inline code.
 
 ````md
 Double quotes `"` and single quotes `'` of enclosed text are replaced by **"double curly quotes"** and **'single curly quotes'**.
@@ -181,7 +201,8 @@ Three consecutive dots `...` are replaced by an ellipsis **...** entity.
 ````
 
 {{% notice style="secondary" icon="eye" title="Result" %}}
-Double quotes `"` and single quotes `'` of enclosed text are replaced by **"double curly quotes"** and **'single curly quotes'**.
+Double quotes `"` and single quotes `'` of enclosed text are replaced by **"double curly quotes"** and **'single curly
+quotes'**.
 
 Double dashes `--` and triple dashes `---` are replaced by en-dash **--** and em-dash **---** entities.
 
@@ -192,7 +213,8 @@ Three consecutive dots `...` are replaced by an ellipsis **...** entity.
 
 ### Keyboard Shortcuts
 
-{{% badge color="orangered" icon="fa-fw fas fa-code" %}}HTML{{% /badge %}} You can use the `<kbd>` element to style keyboard shortcuts.
+{{% badge color="orangered" icon="fa-fw fas fa-code" %}}HTML{{% /badge %}} You can use the `<kbd>` element to style
+keyboard shortcuts.
 
 ````html
 Press <kbd>STRG</kbd> <kbd>ALT</kbd> <kbd>DEL</kbd> to end your shift early.
@@ -204,7 +226,9 @@ Press <kbd>STRG</kbd> <kbd>ALT</kbd> <kbd>DEL</kbd> to end your shift early.
 
 ### Sub and Super Script
 
-{{% badge color="orangered" icon="fa-fw fas fa-code" %}}HTML{{% /badge %}} You can also use the `<sub>` and `<sup>` elements. For more complex stuff or if your configuration does not allow HTML, you can use the [`math` shortcode](shortcodes/math).
+{{% badge color="orangered" icon="fa-fw fas fa-code" %}}HTML{{% /badge %}} You can also use the `<sub>` and `<sup>`
+elements. For more complex stuff or if your configuration does not allow HTML, you can use the [
+`math` shortcode](shortcodes/math).
 
 ````html
 How many liters H<sub>2</sub>O fit into 1dm<sup>3</sup>?
@@ -222,7 +246,8 @@ You can write a list of items in which the order of the items does not explicitl
 
 It is possible to nest lists by indenting an item for the next sublevel.
 
-You may use any of `-`, `*` or `+` to denote bullets for each list item but should not switch between those symbols inside one whole list.
+You may use any of `-`, `*` or `+` to denote bullets for each list item but should not switch between those symbols
+inside one whole list.
 
 ````md
 - Lorem ipsum dolor sit amet
@@ -236,6 +261,7 @@ You may use any of `-`, `*` or `+` to denote bullets for each list item but shou
 ````
 
 {{% notice style="secondary" icon="eye" title="Result" %}}
+
 - Lorem ipsum dolor sit amet
 - Consectetur adipiscing elit
   - Vestibulum laoreet porttitor sem
@@ -244,7 +270,7 @@ You may use any of `-`, `*` or `+` to denote bullets for each list item but shou
   - Phasellus iaculis neque
   - Purus sodales ultricies
 - Faucibus porta lacus fringilla vel
-{{% /notice %}}
+  {{% /notice %}}
 
 ### Ordered
 
@@ -252,7 +278,8 @@ You can create a list of items in which the order of items does explicitly matte
 
 It is possible to nest lists by indenting an item for the next sublevel.
 
-Markdown will automatically number each of your items consecutively. This means, the order number you are providing is irrelevant.
+Markdown will automatically number each of your items consecutively. This means, the order number you are providing is
+irrelevant.
 
 ````md
 1. Lorem ipsum dolor sit amet
@@ -266,19 +293,21 @@ Markdown will automatically number each of your items consecutively. This means,
 ````
 
 {{% notice style="secondary" icon="eye" title="Result" %}}
+
 1. Lorem ipsum dolor sit amet
 1. Consectetur adipiscing elit
-    1. Integer molestie lorem at massa
-    7. Facilisis in pretium nisl aliquet
+1. Integer molestie lorem at massa
+7. Facilisis in pretium nisl aliquet
 99. Nulla volutpat aliquam velit
-    1. Faucibus porta lacus fringilla vel
-    1. Aenean sit amet erat nunc
+1. Faucibus porta lacus fringilla vel
+1. Aenean sit amet erat nunc
 17. Eget porttitor lorem
-{{% /notice %}}
+    {{% /notice %}}
 
 ### Tasks
 
-{{% badge color="darkgray" icon="fa-fw fab fa-github" %}}GFM{{% /badge %}} You can add task lists resulting in checked or unchecked non-clickable items
+{{% badge color="darkgray" icon="fa-fw fab fa-github" %}}GFM{{% /badge %}} You can add task lists resulting in checked
+or unchecked non-clickable items
 
 ````md
 - [x] Basic Test
@@ -289,20 +318,24 @@ Markdown will automatically number each of your items consecutively. This means,
 ````
 
 {{% notice style="secondary" icon="eye" title="Result" %}}
+
 - [x] Basic Test
 - [ ] More Tests
   - [x] View
   - [x] Hear
   - [ ] Smell
-{{% /notice %}}
+    {{% /notice %}}
 
 ### Definitions
 
-{{% badge color="#888cc4" icon="fa-fw fab fa-markdown" %}}PHP{{% /badge %}} Definition lists are made of terms and definitions of these terms, much like in a dictionary.
+{{% badge color="#888cc4" icon="fa-fw fab fa-markdown" %}}PHP{{% /badge %}} Definition lists are made of terms and
+definitions of these terms, much like in a dictionary.
 
-A definition list in Markdown Extra is made of a single-line term followed by a colon and the definition for that term. You can also associate more than one term to a definition.
+A definition list in Markdown Extra is made of a single-line term followed by a colon and the definition for that term.
+You can also associate more than one term to a definition.
 
-If you add empty lines around the definition terms, additional vertical space will be generated. Also multiple paragraphs are possible
+If you add empty lines around the definition terms, additional vertical space will be generated. Also multiple
+paragraphs are possible
 
 ````md
 Apple
@@ -326,10 +359,10 @@ Apple
 Orange
 : The fruit of an evergreen tree of the genus Citrus.
 
-  You can make juice out of it.
+You can make juice out of it.
 : A telecommunication company.
 
-  You can't make juice out of it.
+You can't make juice out of it.
 {{% /notice %}}
 
 ## Code
@@ -366,13 +399,17 @@ Be impressed by my advanced code:
     line 1 of code
     line 2 of code
     line 3 of code
+
 {{% /notice %}}
 
 ### Fenced Code Block
 
-If you want to gain more control of your code block you can enclose your code by at least three backticks ```` ``` ```` a so called fence.
+If you want to gain more control of your code block you can enclose your code by at least three backticks ```` ``` ````
+a so called fence.
 
-{{% badge color="darkgray" icon="fa-fw fab fa-github" %}}GFM{{% /badge %}} You can also add a language specifier directly after the opening fence, ` ```js `, and syntax highlighting will automatically be applied according to the selected language in the rendered HTML.
+{{% badge color="darkgray" icon="fa-fw fab fa-github" %}}GFM{{% /badge %}} You can also add a language specifier
+directly after the opening fence, ` ```js `, and syntax highlighting will automatically be applied according to the
+selected language in the rendered HTML.
 
 See [Code Highlighting](shortcodes/highlight) for additional documentation.
 
@@ -394,6 +431,7 @@ See [Code Highlighting](shortcodes/highlight) for additional documentation.
 ````
 
 {{% notice style="secondary" icon="eye" title="Result" %}}
+
 ```js
 {
     name: "Claus",
@@ -408,11 +446,14 @@ See [Code Highlighting](shortcodes/highlight) for additional documentation.
     friends: [ "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donder", "Blitzen", "Rudolph" ]
 };
 ```
+
 {{% /notice %}}
 
 ## Tables
 
-{{% badge color="darkgray" icon="fa-fw fab fa-github" %}}GFM{{% /badge %}} You can create tables by adding pipes as dividers between each cell, and by adding a line of dashes (also separated by bars) beneath the header. Note that the pipes do not need to be vertically aligned.
+{{% badge color="darkgray" icon="fa-fw fab fa-github" %}}GFM{{% /badge %}} You can create tables by adding pipes as
+dividers between each cell, and by adding a line of dashes (also separated by bars) beneath the header. Note that the
+pipes do not need to be vertically aligned.
 
 ````md
 | Option | Description |
@@ -425,14 +466,15 @@ See [Code Highlighting](shortcodes/highlight) for additional documentation.
 {{% notice style="secondary" icon="eye" title="Result" %}}
 | Option | Description |
 |--------|-------------|
-| data   | path to data files to supply the data that will be passed into templates. |
+| data | path to data files to supply the data that will be passed into templates. |
 | engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
+| ext | extension to be used for dest files. |
 {{% /notice %}}
 
 ### Aligned Columns
 
-Adding a colon on the left and/or right side of the dashes below any heading will align the text for that column accordingly.
+Adding a colon on the left and/or right side of the dashes below any heading will align the text for that column
+accordingly.
 
 ````md
 | Option | Number | Description |
@@ -445,9 +487,9 @@ Adding a colon on the left and/or right side of the dashes below any heading wil
 {{% notice style="secondary" icon="eye" title="Result" %}}
 | Option | Number | Description |
 |-------:|:------:|:------------|
-| data   | 1      | path to data files to supply the data that will be passed into templates. |
-| engine | 2      | engine to be used for processing templates. Handlebars is the default. |
-| ext    | 3      | extension to be used for dest files. |
+| data | 1 | path to data files to supply the data that will be passed into templates. |
+| engine | 2 | engine to be used for processing templates. Handlebars is the default. |
+| ext | 3 | extension to be used for dest files. |
 {{% /notice %}}
 
 ## Blockquotes
@@ -465,18 +507,22 @@ Blockquotes can also be nested.
 ````
 
 {{% notice style="secondary" icon="eye" title="Result" %}}
-> Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue. Nunc augue, aliquam non hendrerit ac, commodo vel nisi.
+> Donec massa lacus, ultricies a ullamcorper in, fermentum sed augue. Nunc augue, aliquam non hendrerit ac, commodo vel
+> nisi.
 >
-> > Sed adipiscing elit vitae augue consectetur a gravida nunc vehicula. Donec auctor odio non est accumsan facilisis. Aliquam id turpis in dolor tincidunt mollis ac eu diam.
+> > Sed adipiscing elit vitae augue consectetur a gravida nunc vehicula. Donec auctor odio non est accumsan facilisis.
+> > Aliquam id turpis in dolor tincidunt mollis ac eu diam.
 >
-> Mauris sit amet ligula egestas, feugiat metus tincidunt, luctus libero. Donec congue finibus tempor. Vestibulum aliquet sollicitudin erat, ut aliquet purus posuere luctus.
-{{% /notice %}}
+> Mauris sit amet ligula egestas, feugiat metus tincidunt, luctus libero. Donec congue finibus tempor. Vestibulum
+> aliquet sollicitudin erat, ut aliquet purus posuere luctus.
+> {{% /notice %}}
 
 ## Links
 
 ### Autolink
 
-{{% badge color="darkgray" icon="fa-fw fab fa-github" %}}GFM{{% /badge %}} Absolute URLs will automatically be converted into a link.
+{{% badge color="darkgray" icon="fa-fw fab fa-github" %}}GFM{{% /badge %}} Absolute URLs will automatically be converted
+into a link.
 
 ````md
 This is a link to https://example.com.
@@ -485,7 +531,6 @@ This is a link to https://example.com.
 {{% notice style="secondary" icon="eye" title="Result" %}}
 This is a link to https://example.com.
 {{% /notice %}}
-
 
 ### Basic Link
 
@@ -513,7 +558,8 @@ For even further information, you can add an additional text, displayed in a too
 
 ### Link References
 
-Links can be simplyfied for recurring reuse by using a reference ID to later define the URL location. This simplyfies writing if you want to use a link more than once in a document.
+Links can be simplyfied for recurring reuse by using a reference ID to later define the URL location. This simplyfies
+writing if you want to use a link more than once in a document.
 
 ````md
 [Example][somelinkID]
@@ -529,11 +575,16 @@ Links can be simplyfied for recurring reuse by using a reference ID to later def
 
 ### Footnotes
 
-{{% badge color="#888cc4" icon="fa-fw fab fa-markdown" %}}PHP{{% /badge %}} Footnotes work mostly like reference-style links. A footnote is made of two things, a marker in the text that will become a superscript number and a footnote definition that will be placed in a list of footnotes.
+{{% badge color="#888cc4" icon="fa-fw fab fa-markdown" %}}PHP{{% /badge %}} Footnotes work mostly like reference-style
+links. A footnote is made of two things, a marker in the text that will become a superscript number and a footnote
+definition that will be placed in a list of footnotes.
 
-Usually the list of footnotes will be shown at the end of your document. If we use a footnote in a notice box it will instead be listed at the end of its box.
+Usually the list of footnotes will be shown at the end of your document. If we use a footnote in a notice box it will
+instead be listed at the end of its box.
 
-Footnotes can contain block elements, which means that you can put multiple paragraphs, lists, blockquotes and so on in a footnote. It works the same as for list items, just indent the following paragraphs by four spaces in the footnote definition.
+Footnotes can contain block elements, which means that you can put multiple paragraphs, lists, blockquotes and so on in
+a footnote. It works the same as for list items, just indent the following paragraphs by four spaces in the footnote
+definition.
 
 ````md
 That's some text with a footnote[^1]
@@ -556,9 +607,10 @@ That's some text with a footnote[^1]
 That's some more text with a footnote.[^someid]
 
 [^someid]:
-    Anything of interest goes here.
+Anything of interest goes here.
 
     Blue light glows blue.
+
 {{% /notice %}}
 
 ## Images
@@ -589,7 +641,8 @@ Like links, images can also be given a tooltip.
 
 ### Image References
 
-Images can also be linked by reference ID to later define the URL location. This simplyfies writing if you want to use an image more than once in a document.
+Images can also be linked by reference ID to later define the URL location. This simplyfies writing if you want to use
+an image more than once in a document.
 
 ````md
 ![La Forge][laforge]
@@ -605,11 +658,14 @@ Images can also be linked by reference ID to later define the URL location. This
 
 ### Image Effects
 
-{{% badge color="#7dc903" icon="fa-fw fas fa-puzzle-piece" %}}Relearn{{% /badge %}} This theme allows additional non-standard formatting by setting query parameter at the end of the image URL. The default [behavior is configurable](cont/imageeffects) through your `hugo.toml` or frontmatter parameter.
+{{% badge color="#7dc903" icon="fa-fw fas fa-puzzle-piece" %}}Relearn{{% /badge %}} This theme allows additional
+non-standard formatting by setting query parameter at the end of the image URL. The
+default [behavior is configurable](cont/imageeffects) through your `hugo.toml` or frontmatter parameter.
 
 #### Resizing
 
-Add query parameter `width` and/or `height` to the link image to resize the image. Values are CSS values (default is `auto`).
+Add query parameter `width` and/or `height` to the link image to resize the image. Values are CSS values (default is
+`auto`).
 
 ````md
 ![Minion](https://octodex.github.com/images/minion.png?width=20vw)
@@ -637,7 +693,8 @@ Add query parameter `width` and/or `height` to the link image to resize the imag
 
 #### CSS Classes
 
-Add a query parameter `classes` to the link image to add CSS classes. Add some of the predefined values or even define your own in your CSS.
+Add a query parameter `classes` to the link image to add CSS classes. Add some of the predefined values or even define
+your own in your CSS.
 
 ##### Shadow
 
@@ -718,7 +775,8 @@ Add the query parameter `lightbox=false` to the image link to disable the lightb
 {{% /notice %}}
 
 {{% notice note %}}
-If you want to wrap an image in a link and `lightbox=true` is your default setting, you have to explicitly disable the lightbox to avoid it to hijacking your link like:
+If you want to wrap an image in a link and `lightbox=true` is your default setting, you have to explicitly disable the
+lightbox to avoid it to hijacking your link like:
 
 ````md
 [![Homercat](https://octodex.github.com/images/homercat.png?lightbox=false)](https://octodex.github.com/#homercat)

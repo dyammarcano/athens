@@ -5,4 +5,5 @@ title = "Showcase"
   list = "never"
   publishResources = true
 +++
+
 {{< piratify >}}

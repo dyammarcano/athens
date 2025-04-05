@@ -5,9 +5,13 @@ weight: 2
 
 ---
 
-This document lays out generally how we want to work with each other. It's hard to make a rule or set a guideline for each and every situation that might come up in our community. That's basically predicting the future!
+This document lays out generally how we want to work with each other. It's hard to make a rule or set a guideline for
+each and every situation that might come up in our community. That's basically predicting the future!
 
-We do of course set some boundaries like the [code of conduct](https://github.com/gomods/athens/blob/main/CODE_OF_CONDUCT.md), but we want to fall back to this document for guidance when we encounter a new situation or question that we need to address.
+We do of course set some boundaries like
+the [code of conduct](https://github.com/dyammarcano/athens/blob/main/CODE_OF_CONDUCT.md), but we want to fall back to
+this
+document for guidance when we encounter a new situation or question that we need to address.
 
 # Guiding Principles
 
@@ -22,7 +26,8 @@ In the rest of this document, we're going to go into detail for each of these it
 
 # Be Nice to Each Other
 
-We firmly believe that a nice, welcoming and constructive community comes first, and code and technology second. If the folks in the community around this project aren't nice to each other, it doesn't matter how cool our technology is.
+We firmly believe that a nice, welcoming and constructive community comes first, and code and technology second. If the
+folks in the community around this project aren't nice to each other, it doesn't matter how cool our technology is.
 
 - Let's try to make newcomers feel welcome
 - Let's put our debates in Github issues, and be civil and constructive in them
@@ -31,7 +36,8 @@ We firmly believe that a nice, welcoming and constructive community comes first,
 - We're in different time zones, so let's respect that
 - Let's encourage each other to learn new aspects of our project
 
-Most importantly, let's **be inclusive**. Not everyone will share your point of view, communication style, and many other things. Try to consider their point of view and treat them with respect.
+Most importantly, let's **be inclusive**. Not everyone will share your point of view, communication style, and many
+other things. Try to consider their point of view and treat them with respect.
 
 # Make Development & Testing Easy
 
@@ -46,7 +52,7 @@ Cognitive load is bad when you're writing code, so let's try to minimize it.
 
 There's an African proverb that goes like this:
 
->If you want to go fast, go alone. If you want to go far, go together.
+> If you want to go fast, go alone. If you want to go far, go together.
 
 We want to apply that wisdom to our community.
 

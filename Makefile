@@ -1,10 +1,10 @@
 VERSION = "unset"
 DATE=$(shell date -u +%Y-%m-%d-%H:%M:%S-%Z)
 
-GOLANGCI_LINT_VERSION=v1.51.2
+GOLANGCI_LINT_VERSION=v1.61.0
 
 ifndef GOLANG_VERSION
-override GOLANG_VERSION = 1.20
+override GOLANG_VERSION = 1.23.5
 endif
 
 .PHONY: build
@@ -13,7 +13,7 @@ build: ## build the athens proxy
 
 .PHONY: build-ver
 build-ver: ## build the athens proxy with version number
-	GO111MODULE=on CGO_ENABLED=0 GOPROXY="https://proxy.golang.org" go build -ldflags "-s -w -X github.com/gomods/athens/pkg/build.version=$(VERSION) -X github.com/gomods/athens/pkg/build.buildDate=$(DATE)" -o athens ./cmd/proxy
+	GO111MODULE=on CGO_ENABLED=0 GOPROXY="https://proxy.golang.org" go build -ldflags "-s -w -X github.com/dyammarcano/athens/pkg/build.version=$(VERSION) -X github.com/dyammarcano/athens/pkg/build.buildDate=$(DATE)" -o athens ./cmd/proxy
 
 athens:
 	$(MAKE) build-ver
@@ -74,7 +74,7 @@ test-unit-docker: ## run unit tests with docker
 
 .PHONY: test-e2e
 test-e2e:
-	cd e2etests && go test --tags e2etests
+	./scripts/test_e2e.sh
 
 .PHONY: test-e2e-docker
 test-e2e-docker:

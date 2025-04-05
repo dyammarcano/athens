@@ -9,11 +9,14 @@ LastModifierEmail: "marwan.sameer@gmail.com"
 
 ### Contributing To Docs
 
-Contributing to docs is just as important, if not more important than, writing code. We use [GoHugo](https://gohugo.io/) to run this website. So if you'd like to improve it, here's how you can run it locally:
+Contributing to docs is just as important, if not more important than, writing code. We use [GoHugo](https://gohugo.io/)
+to run this website. So if you'd like to improve it, here's how you can run it locally:
 
-1. Install the Hugo binary: https://github.com/gohugoio/hugo#choose-how-to-install 
+1. Install the Hugo binary: https://github.com/gohugoio/hugo#choose-how-to-install
 2. `cd ./docs && hugo server`
 
-The Hugo server will run on http://localhost:1313 and it will automatically watch your files and update the website every time you make a change. 
+The Hugo server will run on http://localhost:1313 and it will automatically watch your files and update the website
+every time you make a change.
 
-Alternatively you can run our custom docker image as outlined [here](https://github.com/gomods/athens/blob/main/DEVELOPMENT.md#build-the-docs)
+Alternatively you can run our custom docker image as
+outlined [here](https://github.com/dyammarcano/athens/blob/main/DEVELOPMENT.md#build-the-docs)

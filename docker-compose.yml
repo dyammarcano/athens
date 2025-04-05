@@ -3,9 +3,9 @@ services:
   dev:
     build:
       context: .
-      dockerfile: cmd/proxy/Dockerfile
+      dockerfile: Dockerfile
       args:
-        GOLANG_VERSION: "1.20"
+        GOLANG_VERSION: "1.23.5"
     environment:
       - ATHENS_MONGO_STORAGE_URL=mongodb://mongo:27017
       - TIMEOUT=20 # in case the mongo dependency takes longer to start up
@@ -20,8 +20,8 @@ services:
       context: .
       dockerfile: Dockerfile.test
       args:
-        GOLANG_VERSION: "1.20"
-    command: ["./scripts/test_unit.sh"]
+        GOLANG_VERSION: "1.23.5"
+    command: [ "./scripts/test_unit.sh" ]
     environment:
       - GO_ENV=test
       - ATHENS_MINIO_ENDPOINT=http://minio:9000
@@ -36,8 +36,8 @@ services:
       context: .
       dockerfile: Dockerfile.test
       args:
-        GOLANG_VERSION: "1.20"
-    command: ["./scripts/test_e2e.sh"]
+        GOLANG_VERSION: "1.23.5"
+    command: [ "./scripts/test_e2e.sh" ]
   azurite:
     image: arafato/azurite:2.6.5
     ports:
@@ -98,7 +98,7 @@ services:
       - "6380:6380"
     volumes:
       - "./test/redis.conf:/usr/local/etc/redis/redis.conf"
-    entrypoint: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    entrypoint: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
   etcd0:
     image: quay.io/coreos/etcd
     ports:

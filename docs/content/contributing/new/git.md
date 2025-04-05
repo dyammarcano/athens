@@ -8,7 +8,8 @@ LastModifiedEmail: "hello@robloranger.ca"
 
 ### What is git?
 
-[Git](https://git-scm.com/) is a free and open source distributed [version control system](https://en.wikipedia.org/wiki/Version_control). What does
+[Git](https://git-scm.com/) is a free and open source
+distributed [version control system](https://en.wikipedia.org/wiki/Version_control). What does
 that really mean? It is a way to track changes to files on your computer. This
 is like keeping a detailed log of every time you change a file, what lines and
 characters were changed. So you could look at the log and see what changed, or
@@ -72,4 +73,6 @@ Book.
 
 ### Try it out
 
-There is a great interactive tutorial, for free, available at [Code Academy](https://www.codecademy.com/learn/learn-git). Take some time to play with it and try out some of the commands.
+There is a great interactive tutorial, for free, available
+at [Code Academy](https://www.codecademy.com/learn/learn-git). Take some time to play with it and try out some of the
+commands.

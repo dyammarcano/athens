@@ -27,14 +27,15 @@ We'll provide all the support we can possibly provide to help you contribute
 in any way you'd like. If you're considering joining us, here are some ideas
 for how you can get involved:
 
-- Comment on an [issue](https://github.com/gomods/athens/issues) that you're
-interested in
-- Submit a [pull request](https://github.com/gomods/athens/pulls) (PR) to fix
-an issue, or to improve something that doesn't have an issue
+- Comment on an [issue](https://github.com/dyammarcano/athens/issues) that you're
+  interested in
+- Submit a [pull request](https://github.com/dyammarcano/athens/pulls) (PR) to fix
+  an issue, or to improve something that doesn't have an issue
 - Review a PR that you're interested in
 - Join us at [office hours](/contributing/community/office-hours/)
-(or more than one!)
-    - See [here](https://www.youtube.com/playlist?list=PLAk08AWjk5sekD-FRjU4VVe97nltUyZ4W) for recordings of all our past meetings
+  (or more than one!)
+    - See [here](https://www.youtube.com/playlist?list=PLAk08AWjk5sekD-FRjU4VVe97nltUyZ4W) for recordings of all our
+      past meetings
 - Come chat with us in the [gophers slack](https://invite.slack.golangbridge.org/) in the `#athens` channel
 - ... and anything else that's appropriate for you!
 
@@ -64,7 +65,7 @@ you:
 - Attend our development meetings regularly<sup>1</sup>
 - Comment on issues with your experiences and opinions
 - Add your comments and reviews on pull requests (anyone can do this as a
-community member)
+  community member)
 - Contribute PRs to fix issues
 - Open issues as you find them
 

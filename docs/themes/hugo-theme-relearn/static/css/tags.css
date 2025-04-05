@@ -1,6 +1,6 @@
 /* Tags */
 
-.tags{
+.tags {
     margin-left: 1rem;
     margin-top: 1rem;
 }
@@ -12,7 +12,7 @@
 #R-body .tags a.term-link {
     border-bottom-right-radius: 3px;
     border-top-right-radius: 3px;
-    box-shadow: 0 1px 2px rgba( 0, 0, 0, .2 );
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
     display: inline-block;
     font-size: 0.8em;
     font-weight: 400;
@@ -31,7 +31,7 @@
     left: -1em;
     height: 0;
     position: absolute;
-    top:0;
+    top: 0;
     width: 0;
 }
 

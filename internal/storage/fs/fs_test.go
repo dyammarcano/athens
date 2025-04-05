@@ -1,0 +1,41 @@
+package fs
+
+import (
+	"testing"
+
+	"github.com/dyammarcano/athens/internal/storage/compliance"
+	"github.com/spf13/afero"
+	"github.com/stretchr/testify/require"
+)
+
+func TestBackend(t *testing.T) {
+	fs := afero.NewMemMapFs()
+	b := getStorage(t, fs)
+	compliance.RunTests(t, b, b.Clear)
+	if err := fs.RemoveAll(b.rootDir); err != nil {
+		return
+	}
+}
+
+func BenchmarkBackend(b *testing.B) {
+	fs := afero.NewOsFs()
+	backend := getStorage(b, fs)
+	compliance.RunBenchmarks(b, backend, backend.Clear)
+	if err := fs.RemoveAll(backend.rootDir); err != nil {
+		return
+	}
+}
+
+func BenchmarkMemory(b *testing.B) {
+	backend := getStorage(b, afero.NewMemMapFs())
+	compliance.RunBenchmarks(b, backend, backend.Clear)
+}
+
+func getStorage(tb testing.TB, fs afero.Fs) *storageImpl {
+	tb.Helper()
+	dir, err := afero.TempDir(fs, "", "athens-fs-test")
+	require.NoError(tb, err, "could not create temp dir")
+	backend, err := NewStorage(dir, fs)
+	require.NoError(tb, err)
+	return backend.(*storageImpl)
+}

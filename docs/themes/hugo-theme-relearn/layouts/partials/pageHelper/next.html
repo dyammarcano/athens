@@ -3,11 +3,11 @@
 {{- $found := false }}
 {{- $result := "" }}
 {{- range $collection }}
-  {{- if $found }}
-	  {{- $result = .Page.Page }}
-	  {{- break }}
-  {{- else if eq $item .Page.Page }}
-	  {{- $found = true }}
-  {{- end }}
+{{- if $found }}
+{{- $result = .Page.Page }}
+{{- break }}
+{{- else if eq $item .Page.Page }}
+{{- $found = true }}
+{{- end }}
 {{- end }}
 {{- return $result }}
