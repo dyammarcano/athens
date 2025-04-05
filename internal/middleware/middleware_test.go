@@ -61,7 +61,11 @@ func Test_FilterMiddleware(t *testing.T) {
 	if err != nil {
 		t.FailNow()
 	}
-	defer os.Remove(filter.Name())
+	defer func(name string) {
+		if err := os.Remove(name); err != nil {
+			t.Fatalf("Unable to remove temp file: %s", err.Error())
+		}
+	}(filter.Name())
 
 	conf, err := config.GetConf(testConfigFile(t))
 	if err != nil {
@@ -111,7 +115,9 @@ func (m *hookMock) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	m.invoked = true
 	w.WriteHeader(m.resCode)
 	decoder := json.NewDecoder(r.Body)
-	decoder.Decode(&m.params)
+	if err := decoder.Decode(&m.params); err != nil {
+		return
+	}
 }
 
 type HookTestsSuite struct {

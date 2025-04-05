@@ -14,13 +14,21 @@ import (
 
 func TestBackend(t *testing.T) {
 	backend := getStorage(t)
-	defer backend.client.containerURL.Delete(context.Background(), azblob.ContainerAccessConditions{})
+	defer func(containerURL *azblob.ContainerURL, ctx context.Context, ac azblob.ContainerAccessConditions) {
+		if _, err := containerURL.Delete(ctx, ac); err != nil {
+			t.Fatalf("failed to delete container: %v", err)
+		}
+	}(backend.client.containerURL, context.Background(), azblob.ContainerAccessConditions{})
 	compliance.RunTests(t, backend, backend.clear)
 }
 
 func BenchmarkBackend(b *testing.B) {
 	backend := getStorage(b)
-	defer backend.client.containerURL.Delete(context.Background(), azblob.ContainerAccessConditions{})
+	defer func(containerURL *azblob.ContainerURL, ctx context.Context, ac azblob.ContainerAccessConditions) {
+		if _, err := containerURL.Delete(ctx, ac); err != nil {
+			b.Fatalf("failed to delete container: %v", err)
+		}
+	}(backend.client.containerURL, context.Background(), azblob.ContainerAccessConditions{})
 	compliance.RunBenchmarks(b, backend, backend.clear)
 }
 

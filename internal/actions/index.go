@@ -29,7 +29,7 @@ func indexHandler(index index.Indexer) http.HandlerFunc {
 		for _, meta := range list {
 			if err = enc.Encode(meta); err != nil {
 				log.EntryFromContext(ctx).SystemErr(err)
-				fmt.Fprintln(w, err)
+				_, _ = fmt.Fprintln(w, err)
 				return
 			}
 		}

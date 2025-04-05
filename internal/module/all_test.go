@@ -22,8 +22,8 @@ type ModuleSuite struct {
 	env          []string
 }
 
-func (m *ModuleSuite) SetupTest() {
-	m.fs = afero.NewMemMapFs()
+func (s *ModuleSuite) SetupTest() {
+	s.fs = afero.NewMemMapFs()
 }
 
 func TestModules(t *testing.T) {

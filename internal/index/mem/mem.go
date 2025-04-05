@@ -38,7 +38,7 @@ func (i *indexer) Index(_ context.Context, mod, ver string) error {
 }
 
 func (i *indexer) Lines(_ context.Context, since time.Time, limit int) ([]*index.Line, error) {
-	lines := []*index.Line{}
+	var lines []*index.Line
 	var count int
 	i.mu.RLock()
 	defer i.mu.RUnlock()

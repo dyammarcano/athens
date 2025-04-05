@@ -36,7 +36,7 @@ func ListHandler(dp Protocol, lggr log.Entry, df *mode.DownloadFile) http.Handle
 			return
 		}
 
-		fmt.Fprint(w, strings.Join(versions, "\n"))
+		_, _ = fmt.Fprint(w, strings.Join(versions, "\n"))
 	}
 	return http.HandlerFunc(f)
 }

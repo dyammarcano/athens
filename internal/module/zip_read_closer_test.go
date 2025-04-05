@@ -6,15 +6,15 @@ import (
 	"github.com/spf13/afero"
 )
 
-func (m *ModuleSuite) TestZipReadCloser() {
+func (s *ModuleSuite) TestZipReadCloser() {
 	const (
-		root    = "testroot"
+		//root    = "testroot"
 		version = "v1.0.0"
 		info    = "testinfo"
 		mod     = "testmod"
 		zip     = "testzip"
 	)
-	r := m.Require()
+	r := s.Require()
 
 	fs := afero.NewMemMapFs()
 	gopath, err := afero.TempDir(fs, "", "athens-test")
@@ -50,7 +50,12 @@ func createAndWriteFile(fs afero.Fs, filename, data string) error {
 	if err != nil {
 		return err
 	}
-	defer fileHandle.Close()
+	defer func(fileHandle afero.File) {
+		if err := fileHandle.Close(); err != nil {
+			// log error
+			return
+		}
+	}(fileHandle)
 	_, err = fileHandle.Write([]byte(data))
 	return err
 }

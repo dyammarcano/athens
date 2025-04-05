@@ -409,7 +409,9 @@ func tempFile(perm os.FileMode) (name string, err error) {
 		return "", err
 	}
 	if err = os.Chmod(f.Name(), perm); err != nil {
-		os.Remove(f.Name())
+		if err := os.Remove(f.Name()); err != nil {
+			return "", err
+		}
 		return "", err
 	}
 	return f.Name(), nil
@@ -429,7 +431,11 @@ func Test_checkFilePerms(t *testing.T) {
 			t.Fatalf("tempFile creation error %s", err)
 		}
 		incorrectFiles[i] = f
-		defer os.Remove(f)
+		defer func(name string) {
+			if err := os.Remove(name); err != nil {
+				t.Fatalf("tempFile cleanup error %s", err)
+			}
+		}(f)
 	}
 
 	correctPerms := []os.FileMode{0o600, 0o400, 0o644}
@@ -441,7 +447,11 @@ func Test_checkFilePerms(t *testing.T) {
 			t.Fatalf("tempFile creation error %s", err)
 		}
 		correctFiles[i] = f
-		defer os.Remove(f)
+		defer func(name string) {
+			if err := os.Remove(name); err != nil {
+				t.Fatalf("tempFile cleanup error %s", err)
+			}
+		}(f)
 	}
 
 	type test struct {
@@ -630,7 +640,7 @@ func TestEnvListDecode(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	cfg.GoBinaryEnvVars.Validate()
+	_ = cfg.GoBinaryEnvVars.Validate()
 }
 
 func TestNetworkMode(t *testing.T) {

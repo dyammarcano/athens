@@ -19,9 +19,9 @@ const (
 )
 
 type listMergeTest struct {
-	name        string
-	newStorage  func() (storage.Backend, error)
-	module      string
+	name       string
+	newStorage func() (storage.Backend, error)
+	//module      string
 	goVersions  []string
 	goErr       error
 	strVersions []string
@@ -36,7 +36,7 @@ type storageMock struct {
 	err      error
 }
 
-func (s *storageMock) List(ctx context.Context, module string) ([]string, error) {
+func (s *storageMock) List(_ context.Context, _ string) ([]string, error) {
 	return s.versions, s.err
 }
 
@@ -107,7 +107,7 @@ type listerMock struct {
 	err      error
 }
 
-func (l *listerMock) List(ctx context.Context, mod string) (*storage.RevInfo, []string, error) {
+func (l *listerMock) List(_ context.Context, _ string) (*storage.RevInfo, []string, error) {
 	return nil, l.versions, l.err
 }
 
@@ -116,7 +116,10 @@ func TestListMerge(t *testing.T) {
 	bts := []byte("123")
 	clearStorage := func(st storage.Backend, module string, versions []string) {
 		for _, v := range versions {
-			st.Delete(ctx, module, v)
+			err := st.Delete(ctx, module, v)
+			if err != nil {
+				return
+			}
 		}
 	}
 
@@ -127,7 +130,9 @@ func TestListMerge(t *testing.T) {
 				t.Fatal(err)
 			}
 			for _, v := range tc.strVersions {
-				s.Save(ctx, testModName, v, bts, io.NopCloser(bytes.NewReader(bts)), bts)
+				if err := s.Save(ctx, testModName, v, bts, io.NopCloser(bytes.NewReader(bts)), bts); err != nil {
+					return
+				}
 			}
 			defer clearStorage(s, testModName, tc.strVersions)
 			dp := New(&Opts{s, nil, &listerMock{versions: tc.goVersions, err: tc.goErr}, nil, Strict})
@@ -153,8 +158,5 @@ func testErrEq(a, b error) bool {
 		return false
 	}
 
-	if a.Error() != b.Error() {
-		return false
-	}
-	return true
+	return a.Error() == b.Error()
 }

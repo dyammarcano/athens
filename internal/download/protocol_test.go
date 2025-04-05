@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"fmt"
 	"io"
 	"os"
 	"path/filepath"
@@ -357,7 +358,7 @@ func TestGoMod(t *testing.T) {
 
 func getGoldenFile(t *testing.T, name string) []byte {
 	t.Helper()
-	file := filepath.Join("test_data", strings.Replace(name, " ", "_", -1)+".golden")
+	file := filepath.Join("test_data", fmt.Sprintf("%s.golden", strings.ReplaceAll(name, " ", "_")))
 	bts, err := os.ReadFile(file)
 	if err != nil {
 		t.Fatal(err)

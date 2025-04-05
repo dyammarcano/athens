@@ -42,7 +42,11 @@ func (s *ModuleSuite) TestGoGetFetcherFetch() {
 	r.NoError(err)
 	ver, err := fetcher.Fetch(ctx, repoURI, version)
 	r.NoError(err)
-	defer ver.Zip.Close()
+	defer func(Zip io.ReadCloser) {
+		if err := Zip.Close(); err != nil {
+			r.NoError(err)
+		}
+	}(ver.Zip)
 
 	r.True(len(ver.Info) > 0)
 
@@ -83,8 +87,8 @@ func (s *ModuleSuite) TestGoGetFetcherSumDB() {
 		"/mockmod.xyz/@v/v1.2.3.mod":  []byte(`{"module mod}`),
 		"/mockmod.xyz/@v/v1.2.3.zip":  zipBytes,
 	}}
-	proxyAddr, close := s.getProxy(mp)
-	defer close()
+	proxyAddr, c := s.getProxy(mp)
+	defer c()
 
 	fetcher, err := NewGoGetFetcher(s.goBinaryName, "", []string{"GOPROXY=" + proxyAddr}, afero.NewOsFs())
 	r.NoError(err)
@@ -104,14 +108,20 @@ func (s *ModuleSuite) TestGoGetDir() {
 	dir, err := os.MkdirTemp("", "nested")
 	r.NoError(err)
 	t.Cleanup(func() {
-		os.RemoveAll(dir)
+		if err := os.RemoveAll(dir); err != nil {
+			return
+		}
 	})
 	fetcher, err := NewGoGetFetcher(s.goBinaryName, dir, s.env, afero.NewOsFs())
 	r.NoError(err)
 
 	ver, err := fetcher.Fetch(ctx, repoURI, version)
 	r.NoError(err)
-	defer ver.Zip.Close()
+	defer func(Zip io.ReadCloser) {
+		if err := Zip.Close(); err != nil {
+			r.NoError(err)
+		}
+	}(ver.Zip)
 
 	dirInfo, err := os.ReadDir(dir)
 	r.NoError(err)
@@ -136,5 +146,7 @@ func (m *mockProxy) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(404)
 		return
 	}
-	w.Write(resp)
+	if _, err := w.Write(resp); err != nil {
+		return
+	}
 }

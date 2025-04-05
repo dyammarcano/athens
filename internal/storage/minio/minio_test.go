@@ -41,7 +41,9 @@ func TestNewStorageExists(t *testing.T) {
 
 		client, ok := backend.(*storageImpl)
 		if test.deleteBucket && ok {
-			client.minioClient.RemoveBucket(test.name)
+			if err := client.minioClient.RemoveBucket(test.name); err != nil {
+				return
+			}
 		}
 	}
 }

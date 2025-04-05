@@ -25,7 +25,9 @@ func TestBackend(t *testing.T) {
 }
 
 func (s *ModuleStore) clear() error {
-	s.client.Database(s.db).Drop(context.Background())
+	if err := s.client.Database(s.db).Drop(context.Background()); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -48,7 +50,7 @@ func getStorage(tb testing.TB) *ModuleStore {
 }
 
 func TestQueryModuleVersionExists(t *testing.T) {
-	modname, ver := "getTestModule", "v1.2.3"
+	module, ver := "getTestModule", "v1.2.3"
 	mock := &storage.Version{
 		Info: []byte("123"),
 		Mod:  []byte("456"),
@@ -59,10 +61,16 @@ func TestQueryModuleVersionExists(t *testing.T) {
 	backend := getStorage(t)
 
 	zipBts, _ := io.ReadAll(mock.Zip)
-	backend.Save(ctx, modname, ver, mock.Mod, bytes.NewReader(zipBts), mock.Info)
-	defer backend.Delete(ctx, modname, ver)
+	if err := backend.Save(ctx, module, ver, mock.Mod, bytes.NewReader(zipBts), mock.Info); err != nil {
+		return
+	}
+	defer func(backend *ModuleStore, ctx context.Context, module, version string) {
+		if err := backend.Delete(ctx, module, version); err != nil {
+			t.SkipNow()
+		}
+	}(backend, ctx, module, ver)
 
-	info, err := query(ctx, backend, modname, ver)
+	info, err := query(ctx, backend, module, ver)
 	require.NoError(t, err)
 	require.Equal(t, mock.Info, info.Info)
 	require.Equal(t, mock.Mod, info.Mod)
@@ -80,12 +88,19 @@ func TestQueryKindNotFoundErrorCases(t *testing.T) {
 	backend := getStorage(t)
 
 	zipBts, _ := io.ReadAll(mock.Zip)
-	backend.Save(ctx, modname, ver, mock.Mod, bytes.NewReader(zipBts), mock.Info)
-	defer backend.Delete(ctx, modname, ver)
+	if err := backend.Save(ctx, modname, ver, mock.Mod, bytes.NewReader(zipBts), mock.Info); err != nil {
+		t.SkipNow()
+		return
+	}
+	defer func(backend *ModuleStore, ctx context.Context, module, version string) {
+		if err := backend.Delete(ctx, module, version); err != nil {
+			t.SkipNow()
+		}
+	}(backend, ctx, modname, ver)
 
 	testCases := []struct {
-		modname string
-		ver     string
+		module string
+		ver    string
 	}{
 		{"getTestModule", "yyy"}, // test NotFound non-existent version
 		{"getTestModule", ""},    // test NotFound empty str version
@@ -96,7 +111,7 @@ func TestQueryKindNotFoundErrorCases(t *testing.T) {
 	}
 
 	for _, test := range testCases {
-		_, err := query(ctx, backend, test.modname, test.ver)
+		_, err := query(ctx, backend, test.module, test.ver)
 		require.Error(t, err)
 		require.Equal(t, errors.KindNotFound, errors.Kind(err))
 	}
@@ -112,7 +127,11 @@ func TestQueryKindUnexpectedErrorCases(t *testing.T) {
 	if err != nil {
 		t.SkipNow()
 	}
-	defer client.Disconnect(ctx)
+	defer func(client *mongo.Client, ctx context.Context) {
+		if err := client.Disconnect(ctx); err != nil {
+			t.SkipNow()
+		}
+	}(client, ctx)
 	coll := client.Database("athens").Collection("modules")
 	errDocs := []struct {
 		Module  string      `bson:"module"`
@@ -125,8 +144,8 @@ func TestQueryKindUnexpectedErrorCases(t *testing.T) {
 	}
 	// In case some docs were inserted into the collection before, using upsert instead.
 	for _, errDoc := range errDocs {
-		filter := bson.D{{"module", errDoc.Module}, {"version", errDoc.Version}}
-		update := bson.D{{"$set", bson.D{{"mod", errDoc.Mod}, {"info", errDoc.Info}}}}
+		filter := bson.D{{Key: "module", Value: errDoc.Module}, {Key: "version", Value: errDoc.Version}}
+		update := bson.D{{Key: "$set", Value: bson.D{{"mod", errDoc.Mod}, {"info", errDoc.Info}}}}
 		opts := options.Update().SetUpsert(true).SetBypassDocumentValidation(true)
 		_, err = coll.UpdateOne(ctx, filter, update, opts)
 		if err != nil {

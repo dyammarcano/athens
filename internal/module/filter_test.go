@@ -34,7 +34,11 @@ func (t *FilterTests) Test_NewFilter() {
 	r.Error(err)
 
 	filter := tempFilterFile(t.T())
-	defer os.Remove(filter)
+	defer func(name string) {
+		if err := os.Remove(name); err != nil {
+			t.Error(err)
+		}
+	}(filter)
 
 	mf, err = NewFilter(filter)
 	r.Equal(filter, mf.filePath)
@@ -45,7 +49,11 @@ func (t *FilterTests) Test_IgnoreSimple() {
 	r := t.Require()
 
 	filter := tempFilterFile(t.T())
-	defer os.Remove(filter)
+	defer func(name string) {
+		if err := os.Remove(name); err != nil {
+			t.Error(err)
+		}
+	}(filter)
 
 	f, err := NewFilter(filter)
 	r.NoError(err)
@@ -62,7 +70,11 @@ func (t *FilterTests) Test_IgnoreParentAllowChildren() {
 	r := t.Require()
 
 	filter := tempFilterFile(t.T())
-	defer os.Remove(filter)
+	defer func(name string) {
+		if err := os.Remove(name); err != nil {
+			t.Error(err)
+		}
+	}(filter)
 
 	f, err := NewFilter(filter)
 	r.NoError(err)
@@ -80,7 +92,11 @@ func (t *FilterTests) Test_OnlyAllowed() {
 	r := t.Require()
 
 	filter := tempFilterFile(t.T())
-	defer os.Remove(filter)
+	defer func(name string) {
+		if err := os.Remove(name); err != nil {
+			t.Error(err)
+		}
+	}(filter)
 
 	f, err := NewFilter(filter)
 	r.NoError(err)
@@ -98,7 +114,11 @@ func (t *FilterTests) Test_Direct() {
 	r := t.Require()
 
 	filter := tempFilterFile(t.T())
-	defer os.Remove(filter)
+	defer func(name string) {
+		if err := os.Remove(name); err != nil {
+			t.Error(err)
+		}
+	}(filter)
 
 	f, err := NewFilter(filter)
 	r.NoError(err)
@@ -115,7 +135,11 @@ func (t *FilterTests) Test_Direct() {
 func (t *FilterTests) Test_versionFilter() {
 	r := t.Require()
 	filter := tempFilterFile(t.T())
-	defer os.Remove(filter)
+	defer func(name string) {
+		if err := os.Remove(name); err != nil {
+			t.Error(err)
+		}
+	}(filter)
 
 	f, err := NewFilter(filter)
 	r.NoError(err)
@@ -133,7 +157,11 @@ func (t *FilterTests) Test_versionFilter() {
 func (t *FilterTests) Test_versionFilterMinor() {
 	r := t.Require()
 	filter := tempFilterFile(t.T())
-	defer os.Remove(filter)
+	defer func(name string) {
+		if err := os.Remove(name); err != nil {
+			t.Error(err)
+		}
+	}(filter)
 
 	f, err := NewFilter(filter)
 	r.NoError(err)
@@ -151,7 +179,11 @@ func (t *FilterTests) Test_versionFilterMinor() {
 func (t *FilterTests) Test_versionFilterMiddle() {
 	r := t.Require()
 	filter := tempFilterFile(t.T())
-	defer os.Remove(filter)
+	defer func(name string) {
+		if err := os.Remove(name); err != nil {
+			t.Error(err)
+		}
+	}(filter)
 
 	f, err := NewFilter(filter)
 	r.NoError(err)
@@ -169,7 +201,11 @@ func (t *FilterTests) Test_versionFilterMiddle() {
 func (t *FilterTests) Test_versionFilterLess() {
 	r := t.Require()
 	filter := tempFilterFile(t.T())
-	defer os.Remove(filter)
+	defer func(name string) {
+		if err := os.Remove(name); err != nil {
+			t.Error(err)
+		}
+	}(filter)
 
 	f, err := NewFilter(filter)
 	r.NoError(err)
@@ -186,7 +222,11 @@ func (t *FilterTests) Test_versionFilterLess() {
 func (t *FilterTests) Test_versionFilterRobust() {
 	r := t.Require()
 	filter := tempFilterFile(t.T())
-	defer os.Remove(filter)
+	defer func(name string) {
+		if err := os.Remove(name); err != nil {
+			t.Error(err)
+		}
+	}(filter)
 
 	f, err := NewFilter(filter)
 	r.NoError(err)
@@ -201,23 +241,27 @@ func (t *FilterTests) Test_versionFilterRobust() {
 func (t *FilterTests) Test_initFromConfig() {
 	r := t.Require()
 	filterFile := tempFilterFile(t.T())
-	defer os.Remove(filterFile)
+	defer func(name string) {
+		if err := os.Remove(name); err != nil {
+			t.Error(err)
+		}
+	}(filterFile)
 
 	goodInput := []byte("+ github.com/a/b\n\n# some comment\n- github.com/c/d\n\nD github.com/x")
-	os.WriteFile(filterFile, goodInput, 0o644)
+	_ = os.WriteFile(filterFile, goodInput, 0o644)
 
 	f, err := initFromConfig(filterFile)
 	r.NotNil(f)
 	r.NoError(err)
 
 	badInput := []byte("+ github.com/a/b\n\n# some comment\n\n- github.com/c/d\n\nD github.com/x\nsome_random_line")
-	os.WriteFile(filterFile, badInput, 0o644)
+	_ = os.WriteFile(filterFile, badInput, 0o644)
 	f, err = initFromConfig(filterFile)
 	r.Nil(f)
 	r.Error(err)
 
 	versionInput := []byte("+ github.com/a/b\n\n# some comment\n\n- github.com/c/d v1,v2.3.4,v3.2.*\n\nD github.com/x\n")
-	os.WriteFile(filterFile, versionInput, 0o644)
+	_ = os.WriteFile(filterFile, versionInput, 0o644)
 	f, err = initFromConfig(filterFile)
 	r.NotNil(f)
 	r.NoError(err)

@@ -24,7 +24,12 @@ func TestPoolLogic(t *testing.T) {
 	ctx := context.Background()
 	m.ch = make(chan struct{})
 	for i := 0; i < 10; i++ {
-		go dp.List(ctx, "")
+		go func() {
+			if _, err := dp.List(ctx, ""); err != nil {
+				t.Errorf("expected no error but got %v", err)
+				return
+			}
+		}()
 	}
 	<-m.ch
 	if m.num != workers {

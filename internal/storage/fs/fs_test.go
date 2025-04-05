@@ -12,14 +12,18 @@ func TestBackend(t *testing.T) {
 	fs := afero.NewMemMapFs()
 	b := getStorage(t, fs)
 	compliance.RunTests(t, b, b.Clear)
-	fs.RemoveAll(b.rootDir)
+	if err := fs.RemoveAll(b.rootDir); err != nil {
+		return
+	}
 }
 
 func BenchmarkBackend(b *testing.B) {
 	fs := afero.NewOsFs()
 	backend := getStorage(b, fs)
 	compliance.RunBenchmarks(b, backend, backend.Clear)
-	fs.RemoveAll(backend.rootDir)
+	if err := fs.RemoveAll(backend.rootDir); err != nil {
+		return
+	}
 }
 
 func BenchmarkMemory(b *testing.B) {
